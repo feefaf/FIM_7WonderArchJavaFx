@@ -7,6 +7,7 @@ public class Card {
 	
 	/*pp*/ Card(CardType front, CardBack back) {
 		this.front = front;
+		// ma growz bit
 		this.back = back;
 	}
 
