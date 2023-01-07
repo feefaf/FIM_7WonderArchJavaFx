@@ -4,19 +4,19 @@ public enum CardBack {
 
 	CentralDeck(null), //
 	
-	Alexandrie(Wonder.Alexandrie), //
-	Halicarnasse(Wonder.Halicarnasse),
-	Ephese(Wonder.Ephese), //
-	Olympie(Wonder.Olympie), //,
-	Babylone(Wonder.Babylone), //
-	Rhodes(Wonder.Rhodes), //
-	Gizeh(Wonder.Gizeh); //
+	Alexandrie(WonderEnum.Alexandrie), //
+	Halicarnasse(WonderEnum.Halicarnasse),
+	Ephese(WonderEnum.Ephese), //
+	Olympie(WonderEnum.Olympie), //,
+	Babylone(WonderEnum.Babylone), //
+	Rhodes(WonderEnum.Rhodes), //
+	Gizeh(WonderEnum.Gizeh); //
 	
 	public final boolean centralDeck;
 	// set only when not centralDeck
-	public final Wonder wonderDeck;
+	public final WonderEnum wonderDeck;
 	
-	private CardBack(Wonder wonderDeck) {
+	private CardBack(WonderEnum wonderDeck) {
 		this.centralDeck = (wonderDeck == null);
 		this.wonderDeck = wonderDeck;
 	}
