@@ -12,7 +12,7 @@ public class Player {
         partyPoint = 0;
         militaryPoint = 0;
         shieldNb = 0;
-        cat = false;
+        controlCat = false;
         ressourceList.put("brick", 0);
         ressourceList.put("wood", 0);
         ressourceList.put("stone", 0);
@@ -22,7 +22,7 @@ public class Player {
     }
 
     public int getAllPoints(){
-        return partyPoint + militaryPoint + ((cat)?2:0);
+        return partyPoint + militaryPoint + ((controlCat)?2:0);
     }
 
 
@@ -87,7 +87,7 @@ public class Player {
     public Wonder getWonder(){return wonder;}
     public int getPartyPoint() {return partyPoint;}
     public int getMilitaryPoint() {return  militaryPoint;}
-    public boolean getCat(){return cat;}
+    public boolean getControlCat(){return controlCat;}
     public ArrayList<Card> getDeckCard(){return deckCard;}
     public HashMap<String, Integer> getRessourceList(){return ressourceList;}
     public int getShieldNb(){return shieldNb;}
@@ -99,7 +99,7 @@ public class Player {
     private Wonder wonder;
     private int partyPoint;
     private int militaryPoint;
-    private boolean cat;
+    private boolean controlCat;
     private ArrayList<Card> deckCard;
     private HashMap<String, Integer> ressourceList;
     private int shieldNb;
