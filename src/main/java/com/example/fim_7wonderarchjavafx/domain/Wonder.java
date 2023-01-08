@@ -16,6 +16,10 @@ public class Wonder {
         //sa localisation sur l'ecran, de sa localisation
     }
 
+    //Getters
+
+    public ArrayList<Piece> getPieceList(){return pieceList;}
+
     private ArrayList<Piece> pieceList;
     private int level;
     private String name;

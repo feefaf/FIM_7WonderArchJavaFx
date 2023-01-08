@@ -3,6 +3,7 @@ package com.example.fim_7wonderarchjavafx.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Player {
     public Player(String nom, int age){
@@ -23,13 +24,50 @@ public class Player {
     public int getAllPoints(){
         return partyPoint + militaryPoint + ((cat)?2:0);
     }
-//Gain
+
+
+
+    // Vérifie si les ressources courantes peuvent payer le coût spécifié
+    public boolean canAfford(HashMap<String, Integer> coût) {
+        for (Map.Entry<String, Integer> entry : coût.entrySet()) {
+            String ressource = entry.getKey();
+            int quantité = entry.getValue();
+            if (!this.ressourceList.containsKey(ressource) || this.ressourceList.get(ressource) < quantité) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public void payCost(HashMap<String, Integer> coût) {
+        // Déduit le coût spécifié des ressources courantes
+        for (Map.Entry<String, Integer> entry : coût.entrySet()) {
+            String ressource = entry.getKey();
+            int quantité = entry.getValue();
+            int ressourcesActuelles = this.ressourceList.get(ressource);
+            this.ressourceList.put(ressource, ressourcesActuelles - quantité);
+        }
+    }
+
+    public void add_ressources(HashMap<String, Integer> coût) {
+        // Ajoute les ressources spécifiées aux ressources courantes
+        for (Map.Entry<String, Integer> entry : coût.entrySet()) {
+            String ressource = entry.getKey();
+            int quantité = entry.getValue();
+            int ressourcesActuelles = this.ressourceList.get(ressource);
+            this.ressourceList.put(ressource, ressourcesActuelles + quantité);
+        }
+    }
+
+
+
+
+    //Gain
     public void gainPartyPoint(int points){
         partyPoint+=points;
     }
     public void gainMilitaryPoint(int points){ militaryPoint+=points;}
-
-    //Permet d'augmenter le nombre de
     public void gainShieldNb(int points){militaryPoint+=points;}
 
     //Setters
