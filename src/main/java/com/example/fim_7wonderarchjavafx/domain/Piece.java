@@ -4,6 +4,7 @@ package com.example.fim_7wonderarchjavafx.domain;
 
 public class Piece {
 
+    Player player;
     public Piece(String nom, String merveille,
                  int PointsDeVictoire, int etage, boolean effet,
                  String urlArriere, String urlAvant){
@@ -20,12 +21,12 @@ public class Piece {
 
     private void returnPiece(){
         this.status = true;
-        applyEffect(this.wonder, this.effect);
+        applyWonderEffect(this.wonder, this.effect, player);
     }
 
 
     //Fonction qui va appliquer l'effet de la wonder
-    public void applyEffect(String nameWonder, boolean effect){
+    public void applyWonderEffect(String nameWonder, boolean effect,  Player player){
         if (effect){
             switch (nameWonder){
                 case "Alexandrie":
