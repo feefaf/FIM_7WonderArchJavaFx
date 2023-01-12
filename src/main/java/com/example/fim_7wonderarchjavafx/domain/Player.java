@@ -27,12 +27,12 @@ public class Player {
 
 
 
-    // Vérifie si les ressources courantes peuvent payer le coût spécifié
-    public boolean canAfford(HashMap<String, Integer> coût) {
-        for (Map.Entry<String, Integer> entry : coût.entrySet()) {
+    // Vérifie si les ressources courantes peuvent payer le cout spécifié
+    public boolean canAfford(HashMap<String, Integer> cout) {
+        for (Map.Entry<String, Integer> entry : cout.entrySet()) {
             String ressource = entry.getKey();
-            int quantité = entry.getValue();
-            if (!this.ressourceList.containsKey(ressource) || this.ressourceList.get(ressource) < quantité) {
+            int quantity = entry.getValue();
+            if (!this.ressourceList.containsKey(ressource) || this.ressourceList.get(ressource) < quantity) {
                 return false;
             }
         }
@@ -40,23 +40,23 @@ public class Player {
     }
 
 
-    public void payCost(HashMap<String, Integer> coût) {
+    public void payCost(HashMap<String, Integer> cout) {
         // Déduit le coût spécifié des ressources courantes
-        for (Map.Entry<String, Integer> entry : coût.entrySet()) {
+        for (Map.Entry<String, Integer> entry : cout.entrySet()) {
             String ressource = entry.getKey();
-            int quantité = entry.getValue();
+            int quantity = entry.getValue();
             int ressourcesActuelles = this.ressourceList.get(ressource);
-            this.ressourceList.put(ressource, ressourcesActuelles - quantité);
+            this.ressourceList.put(ressource, ressourcesActuelles - quantity);
         }
     }
 
-    public void add_ressources(HashMap<String, Integer> coût) {
+    public void add_ressources(HashMap<String, Integer> cout) {
         // Ajoute les ressources spécifiées aux ressources courantes
-        for (Map.Entry<String, Integer> entry : coût.entrySet()) {
+        for (Map.Entry<String, Integer> entry : cout.entrySet()) {
             String ressource = entry.getKey();
-            int quantité = entry.getValue();
+            int quantity = entry.getValue();
             int ressourcesActuelles = this.ressourceList.get(ressource);
-            this.ressourceList.put(ressource, ressourcesActuelles + quantité);
+            this.ressourceList.put(ressource, ressourcesActuelles + quantity);
         }
     }
 

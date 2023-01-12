@@ -11,7 +11,7 @@ public class Wonder {
 
     }
 
-    public void WonderJavaFXDisplayer(int x, int y, int rotate){
+    public void WonderJavaFXDisplayer(int x, int y){
         //Cette fonction permettra d'afficher la merveille en fonction de
         //sa localisation sur l'ecran, de sa localisation
     }

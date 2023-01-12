@@ -17,10 +17,10 @@ public class HelloController {
     private Label welcomeText;
 
     @FXML
-    protected void onPlayClicked(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/javafxrpgmaizafares/ChooseNbrHero-view.fxml")));
+    public void onPlayClicked(MouseEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/NbrOfPlayer-View.fxml")));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

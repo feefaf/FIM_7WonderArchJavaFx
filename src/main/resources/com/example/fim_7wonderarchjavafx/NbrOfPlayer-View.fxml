@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fim_7wonderarchjavafx.NbrOfPlayerController">
    <children>
       <Label alignment="CENTER" layoutX="152.0" layoutY="91.0" prefHeight="38.0" prefWidth="296.0" text="Combien êtes vous a jouer?">
@@ -13,6 +12,11 @@
             <Font name="System Italic" size="23.0" />
          </font>
       </Label>
-      <Button layoutX="34.0" layoutY="187.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="47.0" text="Button" />
+      <Button layoutX="90.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#on2PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="2" />
+      <Button layoutX="160.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#on3PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="3" />
+      <Button layoutX="230.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#on4PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="4" />
+      <Button layoutX="300.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#on5PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="5" />
+      <Button layoutX="374.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#on6PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="6" />
+      <Button layoutX="448.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#on7PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="7" />
    </children>
 </AnchorPane>
