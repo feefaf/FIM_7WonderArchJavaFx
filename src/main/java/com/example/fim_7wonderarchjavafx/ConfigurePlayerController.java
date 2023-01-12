@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,11 +33,16 @@ public class ConfigurePlayerController implements Initializable {
 
     public ImageView wonderImageSlot;
     public TextField SelectedName;
-    public Spinner selectedAge;
+    public Spinner<Integer> selectedAge;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,99);
+            valueFactory.setValue(16);
+
+            selectedAge.setValueFactory(valueFactory);
+
             HashMap<String, String> WonderDeckImageUrl = new HashMap<>();
 
             WonderDeckImageUrl.put("alexandrie", "images/decks/deck-alexandrie.png");
@@ -57,23 +63,24 @@ public class ConfigurePlayerController implements Initializable {
 
     public void onValidateClick(MouseEvent event) throws IOException {
         name = SelectedName.getText();
-        //age = selectedAge.getValue();
+        age = selectedAge.getValue();
         switch(getChoosenWonder()){
             case "Warrior":
             default:
                 System.out.println("Y'a un gros problème dans Validate Player");
         }
+        System.out.println(getNbrOfPlayers());
         if (getNbrOfPlayers() <= 1){//Si on a fini d'ajouter les héros.
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/javafxrpgmaizafares/CombatScene-view.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/javafxrpgmaizafares/CombatScene-view.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }else{//Si il reste des heros a rajouter
             minusNbrOfPlayers(1);//on retire 1 au compteur de héros a rajouter
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/com/example/fim_7wonderarchjavafx/ChoosePlayerWonder-View.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ChoosePlayerWonder-View.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }

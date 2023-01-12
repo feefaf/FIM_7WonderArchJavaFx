@@ -1,6 +1,7 @@
 package com.example.fim_7wonderarchjavafx;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +11,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class ChoosePlayerWonderController {
+public class ChoosePlayerWonderController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
     public Label OrderLabel;
 
     public Button alexandrieButton;
@@ -30,7 +36,7 @@ public class ChoosePlayerWonderController {
     public void onAlexandrieClick(MouseEvent event) throws IOException {
         setChoosenWonder("alexendrie");
         alexandrieButton.setDisable(true);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -50,7 +56,7 @@ public class ChoosePlayerWonderController {
     public void onCizehClick(MouseEvent event) throws IOException {
         setChoosenWonder("cizeh");
         cizehButton.setDisable(true);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -60,7 +66,7 @@ public class ChoosePlayerWonderController {
     public void onEpheseClick(MouseEvent event) throws IOException {
         setChoosenWonder("ephese");
         epheseButton.setDisable(true);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -70,7 +76,7 @@ public class ChoosePlayerWonderController {
     public void onHalicarnasseClick(MouseEvent event) throws IOException {
         setChoosenWonder("halicarnasse");
         halicarnasseButton.setDisable(true);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -80,7 +86,7 @@ public class ChoosePlayerWonderController {
     public void onOlympiaClick(MouseEvent event) throws IOException {
         setChoosenWonder("olympia");
         olympiaButton.setDisable(true);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -90,7 +96,7 @@ public class ChoosePlayerWonderController {
     public void onRhodesClick(MouseEvent event) throws IOException {
         setChoosenWonder("rhodes");
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -110,4 +116,6 @@ public class ChoosePlayerWonderController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+
 }
