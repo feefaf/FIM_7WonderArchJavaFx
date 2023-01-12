@@ -2,19 +2,26 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.fim_7wonderarchjavafx.HelloController" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fim_7wonderarchjavafx.HelloController">
    <children>
+      <ImageView fitHeight="726.0" fitWidth="1280.0" layoutX="-42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/BackGround/zeus-temple.jpg" />
+         </image>
+      </ImageView>
       <Button layoutX="540.0" layoutY="396.0" mnemonicParsing="false" onMouseClicked="#onPlayClicked" prefHeight="49.0" prefWidth="115.0" text="PLAY" />
       <Button layoutX="540.0" layoutY="455.0" mnemonicParsing="false" onMouseClicked="#onQuitClicked" prefHeight="49.0" prefWidth="115.0" text="QUIT" />
-      <Label alignment="CENTER" layoutX="334.0" layoutY="282.0" prefHeight="68.0" prefWidth="536.0" text="7 WONDERS ARCHITECT" textFill="#8c451f">
+      <Label alignment="CENTER" layoutX="334.0" layoutY="282.0" prefHeight="68.0" prefWidth="536.0" text="7 WONDERS ARCHITECT" textFill="WHITE">
          <font>
-            <Font name="System Bold Italic" size="40.0" />
+            <Font name="MT Extra" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="646.0" prefHeight="51.0" prefWidth="418.0" text="Created by : RACHATI Imad, VACHERON Matthieu, MAIZA Farès">
+      <Label layoutX="28.0" layoutY="646.0" prefHeight="51.0" prefWidth="418.0" text="Created by : RACHATI Imad, VACHERON Matthieu, MAIZA Farès" textFill="WHITE">
          <font>
             <Font name="System Italic" size="13.0" />
          </font>
