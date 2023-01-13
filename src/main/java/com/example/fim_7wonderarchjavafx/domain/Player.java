@@ -101,6 +101,8 @@ public class Player {
     private int militaryPoint;
     private boolean controlCat;
     private ArrayList<Card> deckCard;
+
+    private ArrayList<ProgressTokens> playerToken;
     private HashMap<String, Integer> ressourceList;
     private int shieldNb;
 

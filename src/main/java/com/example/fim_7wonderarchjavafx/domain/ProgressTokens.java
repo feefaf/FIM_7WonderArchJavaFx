@@ -24,22 +24,43 @@ public class ProgressTokens {
 				case "Urbanisme":
 
 					break;
-				case "Ephèse":
+				case "Artisanat":
 
 					break;
-				case "Babylone":
+				case "Joaillerie":
 
 					break;
-				case "Rhodes":
+				case "Science":
 
 					break;
-				case "Halicarnasse":
+				case "Propagande":
 
 					break;
-				case "Olympie":
+				case "Architecture":
 
 					break;
-				case "Gizeh":
+				case "Economie":
+
+					break;
+				case "Ingénierie":
+
+					break;
+				case "Tactique":
+					player.gainShieldNb(2);
+					break;
+				case "Décoration":
+
+					break;
+				case "Politique":
+
+					break;
+				case "Strategie":
+
+					break;
+				case "Education":
+
+					break;
+				case "Culture":
 
 					break;
 			}
