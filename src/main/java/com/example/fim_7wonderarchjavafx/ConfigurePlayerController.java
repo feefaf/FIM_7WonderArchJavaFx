@@ -1,19 +1,16 @@
 package com.example.fim_7wonderarchjavafx;
 import com.example.fim_7wonderarchjavafx.domain.Player;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -26,6 +23,9 @@ import java.util.ResourceBundle;
 import static com.example.fim_7wonderarchjavafx.ChoosePlayerWonderController.getChoosenWonder;
 import static com.example.fim_7wonderarchjavafx.NbrOfPlayerController.getNbrOfPlayers;
 import static com.example.fim_7wonderarchjavafx.NbrOfPlayerController.minusNbrOfPlayers;
+import static com.example.fim_7wonderarchjavafx.WonderHash.isWonderAvailable;
+import static com.example.fim_7wonderarchjavafx.WonderHash.wondersHash;
+import static com.example.fim_7wonderarchjavafx.listPlayer.listPlayers;
 
 
 //je dois importer l'array de player
@@ -39,7 +39,7 @@ public class ConfigurePlayerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
-            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,99);
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(3,99);
             valueFactory.setValue(16);
 
             selectedAge.setValueFactory(valueFactory);
@@ -64,30 +64,34 @@ public class ConfigurePlayerController implements Initializable {
         }
     }
 
-    public void onValidateClick(MouseEvent event) throws IOException {
+    public void onValidateClick(ActionEvent event) throws IOException {
         name = SelectedName.getText();
         age = selectedAge.getValue();
-        switch(getChoosenWonder()){
-            case "alexandrie":
-            tempPlayer = new Player(name, age, );
-            default:
-                System.out.println("Y'a un gros problème dans Validate Player");
-        }
+
+        //CREATING THE PLAYER
+        //tempPlayer = new Player(name, age, wondersHash.get(getChoosenWonder()));
+        isWonderAvailable.put(getChoosenWonder(), false);
+        //listPlayers.add(tempPlayer);
+
         System.out.println(getNbrOfPlayers());
-        if (getNbrOfPlayers() <= 1){//Si on a fini d'ajouter les héros.
+
+        if (getNbrOfPlayers() <= 1){//Si on a fini d'ajouter les joueurs.
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/javafxrpgmaizafares/CombatScene-view.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }else{//Si il reste des heros a rajouter
-            minusNbrOfPlayers(1);//on retire 1 au compteur de héros a rajouter
+            minusNbrOfPlayers(1);//on retire 1 au compteur de joueurs a rajouter
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ChoosePlayerWonder-View.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+
         }
+
     }
 
 

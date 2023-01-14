@@ -1,5 +1,6 @@
 package com.example.fim_7wonderarchjavafx;
 
+import com.example.fim_7wonderarchjavafx.domain.Piece;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,18 +17,36 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.example.fim_7wonderarchjavafx.WonderHash.isWonderAvailable;
+
 public class NbrOfPlayerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        availableWonders = new HashMap<>();
-        availableWonders.put("alexandrie", true);
-        availableWonders.put("babylon", true);
-        availableWonders.put("cizeh", true);
-        availableWonders.put("ephese", true);
-        availableWonders.put("halicarnasse", true);
-        availableWonders.put("olympie", true);
-        availableWonders.put("rhodes", true);
+        isWonderAvailable.put("alexandrie", true);
+        isWonderAvailable.put("babylon", true);
+        isWonderAvailable.put("cizeh", true);
+        isWonderAvailable.put("ephese", true);
+        isWonderAvailable.put("halicarnasse", true);
+        isWonderAvailable.put("olympie", true);
+        isWonderAvailable.put("rhodes", true);
+
+        //alexandrie.add(new Piece());
+        //alexandrie.add(new Piece());
+        //alexandrie.add(new Piece());
+        //alexandrie.add(new Piece());
+        //alexandrie.add(new Piece());
+
+
+        //wondersHash.put("alexandrie", new  Wonder("alexandrie", alexandrie));
+        //aide : liste des noms de wonders
+        //alexandrie
+        //babylon
+        //cizeh
+        //ephese
+        //halicarnasse
+        //olympie
+        //rhodes
     }
 
     @FXML
@@ -101,13 +120,6 @@ public class NbrOfPlayerController implements Initializable {
         return nbrOfPlayers;
     }
 
-    public static HashMap<String, Boolean> getAvailableWonders() {
-        return availableWonders;
-    }
-    public static void setUnavailableWonders(String wonder) {
-        availableWonders.put(wonder, false);
-    }
-
     public static void minusNbrOfPlayers(int minus) {
         nbrOfPlayers -= minus;
     }
@@ -116,5 +128,12 @@ public class NbrOfPlayerController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    ArrayList<Piece> alexandrie = new ArrayList<>();
+    ArrayList<Piece> babylon = new ArrayList<>();
+    ArrayList<Piece> ephese = new ArrayList<>();
+    ArrayList<Piece> giseh = new ArrayList<>();
+    ArrayList<Piece> halicarnasse = new ArrayList<>();
+    ArrayList<Piece> olympie = new ArrayList<>();
+    ArrayList<Piece> rhodes = new ArrayList<>();
 
 }
