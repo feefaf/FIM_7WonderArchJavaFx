@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
-    public Player(String nom, int age){
+    public Player(String nom, int age, Wonder wonder){
         name = nom;
         this.age = age;
         partyPoint = 0;
@@ -20,6 +20,8 @@ public class Player {
         ressourceList.put("glass", 0);
         ressourceList.put("gold", 0);
     }
+
+
 
     public int getAllPoints(){
         return partyPoint + militaryPoint + ((controlCat)?2:0);

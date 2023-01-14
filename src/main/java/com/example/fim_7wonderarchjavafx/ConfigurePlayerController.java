@@ -1,4 +1,5 @@
 package com.example.fim_7wonderarchjavafx;
+import com.example.fim_7wonderarchjavafx.domain.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,14 +46,16 @@ public class ConfigurePlayerController implements Initializable {
 
             HashMap<String, String> WonderDeckImageUrl = new HashMap<>();
 
-            WonderDeckImageUrl.put("alexandrie", "images/decks/deck-alexandrie.png");
-            WonderDeckImageUrl.put("babylon", "images/decks/deck-babylon.png");
-            WonderDeckImageUrl.put("cizeh", "images/decks/deck-cizeh.png");
-            WonderDeckImageUrl.put("ephese", "images/decks/deck-ephese.png");
-            WonderDeckImageUrl.put("halicarnasse", "images/decks/deck-halicarnasse.png");
-            WonderDeckImageUrl.put("olympie", "images/decks/deck-olympie.png");
-            WonderDeckImageUrl.put("rhodes", "images/decks/deck-rhodes.png");
+            WonderDeckImageUrl.put("alexandrie", "src/main/resources/images/decks/deck-alexandrie.png");
+            WonderDeckImageUrl.put("babylon", "src/main/resources/images/decks/deck-babylon.png");
+            WonderDeckImageUrl.put("cizeh", "src/main/resources/images/decks/deck-cizeh.png");
+            WonderDeckImageUrl.put("ephese", "src/main/resources/images/decks/deck-ephese.png");
+            WonderDeckImageUrl.put("halicarnasse", "src/main/resources/images/decks/deck-halicarnasse.png");
+            WonderDeckImageUrl.put("olympie", "src/main/resources/images/decks/deck-olympie.png");
+            WonderDeckImageUrl.put("rhodes", "src/main/resources/images/decks/deck-rhodes.png");
 
+            System.out.println(getChoosenWonder());
+            System.out.println(WonderDeckImageUrl.get(getChoosenWonder()));
             wonderImageSlot.setImage(chargeImage(WonderDeckImageUrl.get(getChoosenWonder())));
 
         }catch (Exception e) {
@@ -65,7 +68,8 @@ public class ConfigurePlayerController implements Initializable {
         name = SelectedName.getText();
         age = selectedAge.getValue();
         switch(getChoosenWonder()){
-            case "Warrior":
+            case "alexandrie":
+            tempPlayer = new Player(name, age, );
             default:
                 System.out.println("Y'a un gros problème dans Validate Player");
         }
@@ -96,6 +100,7 @@ public class ConfigurePlayerController implements Initializable {
         return image;
     }
 
+    private Player tempPlayer;
     private String name;
     private int age;
 
