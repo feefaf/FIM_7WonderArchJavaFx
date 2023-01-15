@@ -14,6 +14,8 @@ public class CardDecks {
 			this.cardType = cardType;
 			this.url = path;
 		}
+
+		public String geturl() {return url;}
 	}
 	
 	/** Card Types x Quantities for Gizeh Deck */
