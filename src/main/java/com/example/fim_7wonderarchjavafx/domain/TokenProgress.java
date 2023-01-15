@@ -44,11 +44,11 @@ public class TokenProgress {
     }
 
     public void economieEffect(Player player){
-            int newGoldRessource = player.getRessourceList().get("gold") + 1 ;
+            int newGoldRessource = player.getRessourceList().get("gold");
             if (newGoldRessource>1){
                 newGoldRessource+=1;
             }
-        player.getRessourceList().put("gold", newGoldRessource);
+        player.getRessourceList().replace("gold", newGoldRessource);
 
     }
 

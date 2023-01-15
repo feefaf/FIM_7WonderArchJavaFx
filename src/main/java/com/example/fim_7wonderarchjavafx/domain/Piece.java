@@ -75,4 +75,6 @@ public class Piece {
     public String getWonder(){return wonder;}
     public boolean getEffect(){return effect;}
 
+    public int getLevel(){return level;}
+
 }

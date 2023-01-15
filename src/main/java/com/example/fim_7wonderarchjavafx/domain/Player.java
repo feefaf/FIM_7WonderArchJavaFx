@@ -45,6 +45,17 @@ public class Player {
     }
 
 
+    public boolean levelIsBuilt(){
+        for (Piece piece : wonder.getPieceList()){
+            if(wonder.getLevel() == piece.getLevel()){
+                if (piece.getStatus()==false){
+                    return false;
+                }
+            }
+        }
+        wonder.addLevel();
+        return true;
+    }
 
     // Vérifie si les ressources courantes peuvent payer le cout spécifié
     public boolean canAfford(HashMap<String, Integer> cout) {
@@ -133,7 +144,6 @@ public class Player {
     private HashMap<String, Integer> playerToken;
     private HashMap<String, Integer> ressourceList;
     private int shieldNb;
-
 
 
 

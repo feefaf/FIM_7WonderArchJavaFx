@@ -19,6 +19,9 @@ public class Wonder {
     //Getters
 
     public ArrayList<Piece> getPieceList(){return pieceList;}
+    public int getLevel(){return level;}
+
+    public void addLevel(){level+=1;}
 
     private ArrayList<Piece> pieceList;
     private int level;
