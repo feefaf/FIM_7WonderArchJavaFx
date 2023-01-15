@@ -1,7 +1,6 @@
 package com.example.fim_7wonderarchjavafx.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,12 +12,30 @@ public class Player {
         militaryPoint = 0;
         shieldNb = 0;
         controlCat = false;
-        ressourceList.put("brick", 0);
-        ressourceList.put("wood", 0);
-        ressourceList.put("stone", 0);
-        ressourceList.put("paper", 0);
-        ressourceList.put("glass", 0);
-        ressourceList.put("gold", 0);
+        this.ressourceList = new HashMap<String, Integer>();
+        this.ressourceList.put("brick", 0);
+        this.ressourceList.put("wood", 0);
+        this.ressourceList.put("stone", 0);
+        this.ressourceList.put("paper", 0);
+        this.ressourceList.put("glass", 0);
+        this.ressourceList.put("gold", 0);
+
+        this.playerToken.put("Urbanisme", 0);
+        this.playerToken.put("Artisanat", 0);
+        this.playerToken.put("Joaillerie", 0);
+        this.playerToken.put("Science", 0);
+        this.playerToken.put("Tactique", 0);
+        this.playerToken.put("Propagande", 0);
+        this.playerToken.put("Economie", 0);
+        this.playerToken.put("Culture", 0);
+        this.playerToken.put("Architecture", 0);
+        this.playerToken.put("Strategie", 0);
+        this.playerToken.put("Education", 0);
+        this.playerToken.put("Ingenierie",0);
+        this.playerToken.put("Politique", 0);
+        this.playerToken.put("Decoration", 0);
+
+
     }
 
 
@@ -63,7 +80,15 @@ public class Player {
     }
 
 
+    // Fonction qui permettra de verifier si on a le jeton ou pas
 
+    public boolean gotToken(String nameToken) {
+        if (playerToken.get(nameToken) == 1) {
+            playerToken.replace(nameToken,0);
+            return true;
+        }
+        return false;
+    }
 
     //Gain
     public void gainPartyPoint(int points){
@@ -80,6 +105,7 @@ public class Player {
     public void setTurn(int tour){
         nbTurn = tour;
     }
+
 
     //Getters
 
@@ -104,8 +130,11 @@ public class Player {
     private boolean controlCat;
     private ArrayList<Card> deckCard;
 
-    private ArrayList<ProgressTokens> playerToken;
+    private HashMap<String, Integer> playerToken;
     private HashMap<String, Integer> ressourceList;
     private int shieldNb;
+
+
+
 
 }

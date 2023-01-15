@@ -6,11 +6,12 @@ public class Piece {
 
     Player player;
     public Piece(String nom, String merveille,
-                 int PointsDeVictoire, int etage, boolean effet,
+                 int PointsDeVictoire, int shieldnb, int etage, boolean effet,
                  String urlArriere, String urlAvant){
         name = nom;
         wonder = merveille;
         pointPiece = PointsDeVictoire;
+        pointShield = shieldnb;
         level = etage;
         status = false;
         effect = effet;
@@ -57,6 +58,8 @@ public class Piece {
 
     //Attributs
     private int pointPiece;
+
+    private int pointShield;
     private String name;
     private String wonder;
     private int level;
