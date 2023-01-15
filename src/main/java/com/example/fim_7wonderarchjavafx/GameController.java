@@ -20,77 +20,88 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //On commence par trier les joueurs en fonction de leurs Age
-        Collections.sort(listPlayers, new AgeComparator());
+        try {
+            //On commence par trier les joueurs en fonction de leurs Age
+            Collections.sort(listPlayers, new AgeComparator());
 
-        //Je liste tout les attribut FXML dans des arraylist pour les récuperer dynamiquement
+            //Je liste tout les attribut FXML dans des arraylist pour les récuperer dynamiquement
 
-        //Les Peace Token
-        PeaceTokenList.add(PeaceToken1);
-        PeaceTokenList.add(PeaceToken2);
-        PeaceTokenList.add(PeaceToken3);
-        PeaceTokenList.add(PeaceToken4);
-        PeaceTokenList.add(PeaceToken5);
-        PeaceTokenList.add(PeaceToken6);
+            //Les Peace Token
+            PeaceTokenList.add(PeaceToken1);
+            PeaceTokenList.add(PeaceToken2);
+            PeaceTokenList.add(PeaceToken3);
+            PeaceTokenList.add(PeaceToken4);
+            PeaceTokenList.add(PeaceToken5);
+            PeaceTokenList.add(PeaceToken6);
 
-        //Les ImagesView des slot des joueurs
-        PlayerPositionSlotList.add(PlayerPositionSlot1);
-        PlayerPositionSlotList.add(PlayerPositionSlot2);
-        PlayerPositionSlotList.add(PlayerPositionSlot3);
-        PlayerPositionSlotList.add(PlayerPositionSlot4);
-        PlayerPositionSlotList.add(PlayerPositionSlot5);
-        PlayerPositionSlotList.add(PlayerPositionSlot6);
-        PlayerPositionSlotList.add(PlayerPositionSlot7);
+            //Les ImagesView des slot des joueurs
+            PlayerPositionSlotList.add(PlayerPositionSlot1);
+            PlayerPositionSlotList.add(PlayerPositionSlot2);
+            PlayerPositionSlotList.add(PlayerPositionSlot3);
+            PlayerPositionSlotList.add(PlayerPositionSlot4);
+            PlayerPositionSlotList.add(PlayerPositionSlot5);
+            PlayerPositionSlotList.add(PlayerPositionSlot6);
+            PlayerPositionSlotList.add(PlayerPositionSlot7);
 
-        //Les Labels du nom des joueurs
-        PlayerNameLabelList.add(PlayerNameLabel1);
-        PlayerNameLabelList.add(PlayerNameLabel2);
-        PlayerNameLabelList.add(PlayerNameLabel3);
-        PlayerNameLabelList.add(PlayerNameLabel4);
-        PlayerNameLabelList.add(PlayerNameLabel5);
-        PlayerNameLabelList.add(PlayerNameLabel6);
-        PlayerNameLabelList.add(PlayerNameLabel7);
+            //Les Labels du nom des joueurs
+            PlayerNameLabelList.add(PlayerNameLabel1);
+            PlayerNameLabelList.add(PlayerNameLabel2);
+            PlayerNameLabelList.add(PlayerNameLabel3);
+            PlayerNameLabelList.add(PlayerNameLabel4);
+            PlayerNameLabelList.add(PlayerNameLabel5);
+            PlayerNameLabelList.add(PlayerNameLabel6);
+            PlayerNameLabelList.add(PlayerNameLabel7);
 
-        //La liste des decks des joueurs
-        PlayerDeckList.add(PlayerDeck1);
-        PlayerDeckList.add(PlayerDeck2);
-        PlayerDeckList.add(PlayerDeck3);
-        PlayerDeckList.add(PlayerDeck4);
-        PlayerDeckList.add(PlayerDeck5);
-        PlayerDeckList.add(PlayerDeck6);
-        PlayerDeckList.add(PlayerDeck7);
-
-        //la liste des progress Token
-        progressTokenList.add(progressTokenSlot1);
-        progressTokenList.add(progressTokenSlot2);
-        progressTokenList.add(progressTokenSlot3);
-
-        //J'apporte tout les decks
-        wonderDecks.put("alexandrie", deckCardQuantities_Alexandrie);
-        wonderDecks.put("babylon", deckCardQuantities_Babylon);
-        wonderDecks.put("cizeh", deckCardQuantities_Gizeh);
-        wonderDecks.put("ephese", deckCardQuantities_Ephese);
-        wonderDecks.put("halicarnasse", deckCardQuantities_Halicarnasse);
-        wonderDecks.put("olympie", deckCardQuantities_Olympie);
-        wonderDecks.put("rhodes", deckCardQuantities_Rhodes);
+            //La liste des decks des joueurs
+            PlayerDeckList.add(PlayerDeck1);
+            PlayerDeckList.add(PlayerDeck2);
+            PlayerDeckList.add(PlayerDeck3);
+            PlayerDeckList.add(PlayerDeck4);
+            PlayerDeckList.add(PlayerDeck5);
+            PlayerDeckList.add(PlayerDeck6);
+            PlayerDeckList.add(PlayerDeck7);
 
 
+            //la liste des progress Token
+            progressTokenList.add(progressTokenSlot1);
+            progressTokenList.add(progressTokenSlot2);
+            progressTokenList.add(progressTokenSlot3);
 
-        //
-        for (int i = 0; i < 7; i++) {
-            if(i > listPlayers.size()){
-                //=============================================================================
-                //ICI JE DOIS UTILISER LA METHODE QUE MATTHIEU VA FAIRE!!!!!!!!!!!!!!!!!!!!!!!!
-                //=============================================================================
+            //J'apporte tout les decks
+            wonderDecks.put("alexandrie", deckCardQuantities_Alexandrie);
+            wonderDecks.put("babylon", deckCardQuantities_Babylon);
+            wonderDecks.put("cizeh", deckCardQuantities_Gizeh);
+            wonderDecks.put("ephese", deckCardQuantities_Ephese);
+            wonderDecks.put("halicarnasse", deckCardQuantities_Halicarnasse);
+            wonderDecks.put("olympie", deckCardQuantities_Olympie);
+            wonderDecks.put("rhodes", deckCardQuantities_Rhodes);
 
-                //PlayerPositionSlotList.get(i)
-                PlayerNameLabelList.get(i).setText(listPlayers.get(i).getName());
-                tempDeck
-            }else{
-                PlayerPositionSlotList.get(i).setDisable(true);
-                PlayerNameLabelList.get(i).setDisable(true);
-                PlayerDeckList.get(i).setDisable(true);
+
+            List<CardDecks.CardTypeQuantity> tempDecks;
+            //
+            for (int i = 0; i < 7; i++) {
+                if(i > listPlayers.size()){
+                    //=============================================================================
+                    //ICI JE DOIS UTILISER LA METHODE QUE MATTHIEU VA FAIRE!!!!!!!!!!!!!!!!!!!!!!!!
+                    //=============================================================================
+
+                    //PlayerPositionSlotList.get(i)
+                    PlayerNameLabelList.get(i).setText(listPlayers.get(i).getName());
+                    tempDecks = wonderDecks.get(listPlayers.get(i).getWonder().getName());
+                    Collections.shuffle(tempDecks);
+                    PlayerGameDeckList.add(tempDecks);
+
+                    PlayerDeckList.get(i).setImage(chargeImage( tempDecks.get(0).geturl() ));
+
+
+                }else{
+                    PlayerPositionSlotList.get(i).setDisable(true);
+                    PlayerNameLabelList.get(i).setDisable(true);
+                    PlayerDeckList.get(i).setDisable(true);
+                }
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -169,6 +180,15 @@ public class GameController implements Initializable {
     //Game Attributes
     private HashMap<String,List<CardDecks.CardTypeQuantity>> wonderDecks;
 
+    private List<CardDecks.CardTypeQuantity> PlayerGameDeck1;
+    private List<CardDecks.CardTypeQuantity> PlayerGameDeck2;
+    private List<CardDecks.CardTypeQuantity> PlayerGameDeck3;
+    private List<CardDecks.CardTypeQuantity> PlayerGameDeck4;
+    private List<CardDecks.CardTypeQuantity> PlayerGameDeck5;
+    private List<CardDecks.CardTypeQuantity> PlayerGameDeck6;
+    private List<CardDecks.CardTypeQuantity> PlayerGameDeck7;
+
+    private ArrayList<List<CardDecks.CardTypeQuantity>> PlayerGameDeckList;
     //FXML ATTRIBUTES
     public ImageView boardDeck;
     public ImageView PeaceToken1;

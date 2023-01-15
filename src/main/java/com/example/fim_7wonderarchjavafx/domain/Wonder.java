@@ -18,6 +18,7 @@ public class Wonder {
 
     //Getters
 
+    public String getName(){return name;}
     public ArrayList<Piece> getPieceList(){return pieceList;}
     public int getLevel(){return level;}
 
