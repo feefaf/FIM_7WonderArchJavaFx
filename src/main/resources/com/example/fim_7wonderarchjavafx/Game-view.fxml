@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fim_7wonderarchjavafx.GameController">
+   <children>
+      <ImageView fx:id="boardDeck" fitHeight="201.0" fitWidth="118.0" layoutX="940.0" layoutY="194.0" onMouseClicked="#onBoardDeckClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/cards/card-back/card-back-question.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="PeaceToken1" fitHeight="72.0" fitWidth="74.0" layoutX="868.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PeaceToken2" fitHeight="72.0" fitWidth="74.0" layoutX="953.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PeaceToken3" fitHeight="72.0" fitWidth="74.0" layoutX="1042.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PeaceToken5" fitHeight="72.0" fitWidth="74.0" layoutX="867.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PeaceToken4" fitHeight="72.0" fitWidth="74.0" layoutX="956.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PeaceToken6" fitHeight="72.0" fitWidth="74.0" layoutX="1043.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="ActionPrompterLabel" alignment="TOP_LEFT" layoutX="10.0" layoutY="845.0" prefHeight="186.0" prefWidth="365.0" text="Action Prompter" wrapText="true">
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="InfosPrompterLabel" alignment="TOP_LEFT" layoutX="1523.0" layoutY="889.0" prefHeight="186.0" prefWidth="365.0" text="InformationPrompter" wrapText="true">
+         <font>
+            <Font name="Book Antiqua" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="PlayerPositionSlot4" fitHeight="116.0" fitWidth="112.0" layoutX="896.0" layoutY="791.0" onMouseClicked="#onGetPlayer4Infos" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="5.0" layoutY="1036.0" prefHeight="36.0" prefWidth="621.0" text="Credit : Rachati Imad, Vacheron Matthieu, Maiza Farès">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="PlayerNameLabel4" alignment="CENTER" layoutX="845.0" layoutY="985.0" prefHeight="30.0" prefWidth="207.0" />
+      <ImageView fx:id="PlayerPositionSlot2" fitHeight="113.0" fitWidth="104.0" layoutX="320.0" layoutY="426.0" onMouseClicked="#onGetPlayer2Infos" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerPositionSlot6" fitHeight="111.0" fitWidth="111.0" layoutX="1569.0" layoutY="405.0" onMouseClicked="#onGetPlayer6Infos" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="PlayerNameLabel2" alignment="CENTER" layoutX="255.0" layoutY="576.0" prefHeight="30.0" prefWidth="207.0" />
+      <Label fx:id="PlayerNameLabel6" alignment="CENTER" layoutX="1517.0" layoutY="558.0" prefHeight="30.0" prefWidth="207.0" />
+      <ImageView fx:id="PlayerPositionSlot3" fitHeight="130.0" fitWidth="119.0" layoutX="545.0" layoutY="781.0" onMouseClicked="#onGetPlayer3Infos" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="PlayerNameLabel3" alignment="CENTER" layoutX="499.0" layoutY="978.0" prefHeight="30.0" prefWidth="207.0" />
+      <ImageView fx:id="PlayerPositionSlot5" fitHeight="114.0" fitWidth="104.0" layoutX="1222.0" layoutY="807.0" onMouseClicked="#onGetPlayer5Infos" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="PlayerNameLabel5" alignment="CENTER" layoutX="1161.0" layoutY="978.0" prefHeight="30.0" prefWidth="207.0" />
+      <ImageView fx:id="PlayerPositionSlot1" fitHeight="103.0" fitWidth="92.0" layoutX="321.0" layoutY="151.0" onMouseClicked="#onGetPlayer1Infos" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="PlayerNameLabel1" alignment="CENTER" layoutX="261.0" layoutY="297.0" prefHeight="30.0" prefWidth="207.0" />
+      <ImageView fx:id="PlayerPositionSlot7" fitHeight="116.0" fitWidth="104.0" layoutX="1566.0" layoutY="145.0" onMouseClicked="#onGetPlayer7Infos" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="PlayerNameLabel7" alignment="CENTER" layoutX="1519.0" layoutY="304.0" prefHeight="30.0" prefWidth="207.0" />
+      <ImageView fx:id="PlayerDeck1" fitHeight="134.0" fitWidth="77.0" layoutX="507.0" layoutY="127.0" onMouseClicked="#onPlayer1DeckClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerDeck2" fitHeight="134.0" fitWidth="77.0" layoutX="511.0" layoutY="392.0" onMouseClicked="#onPlayer2DeckClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerDeck3" fitHeight="134.0" fitWidth="77.0" layoutX="722.0" layoutY="727.0" onMouseClicked="#onPlayer3DeckClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerDeck4" fitHeight="134.0" fitWidth="77.0" layoutX="1065.0" layoutY="721.0" onMouseClicked="#onPlayer4DeckClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerDeck5" fitHeight="134.0" fitWidth="77.0" layoutX="1370.0" layoutY="730.0" onMouseClicked="#onPlayer5DeckClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerDeck6" fitHeight="134.0" fitWidth="77.0" layoutX="1423.0" layoutY="350.0" onMouseClicked="#onPlayer6DeckClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerDeck7" fitHeight="134.0" fitWidth="77.0" layoutX="1424.0" layoutY="116.0" onMouseClicked="#onPlayer7DeckClicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="militaryVictoryStack" fitHeight="196.0" fitWidth="183.0" layoutX="1161.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/tokens/TasJetonProgres.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hiddenProgressTokenDeck" fitHeight="67.0" fitWidth="69.0" layoutX="729.0" layoutY="216.0" onMouseClicked="#onHiddenProgressTokenDeckClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/tokens-progress/back/token-back.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="progressTokenSlot1" fitHeight="67.0" fitWidth="69.0" layoutX="728.0" layoutY="304.0" onMouseClicked="#onProgressTokenSlot1Clicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="progressTokenSlot2" fitHeight="67.0" fitWidth="69.0" layoutX="726.0" layoutY="384.0" onMouseClicked="#onProgressTokenSlot2Clicked" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="progressTokenSlot3" fitHeight="67.0" fitWidth="69.0" layoutX="725.0" layoutY="464.0" onMouseClicked="#onProgressTokenSlot3Clicked" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="PlayerInfosPrompter" alignment="TOP_LEFT" layoutX="4.0" layoutY="3.0" prefHeight="468.0" prefWidth="162.0" text="Player Infos" wrapText="true">
+         <font>
+            <Font name="Caladea" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

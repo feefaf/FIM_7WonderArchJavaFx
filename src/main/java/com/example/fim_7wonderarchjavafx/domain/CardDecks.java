@@ -8,9 +8,11 @@ public class CardDecks {
 	public static class CardTypeQuantity {
 		public final int quantity;
 		public final CardType cardType;
-		public CardTypeQuantity(int quantity, CardType cardType) {
+		public final String url;
+		public CardTypeQuantity(int quantity, CardType cardType, String path) {
 			this.quantity = quantity;
 			this.cardType = cardType;
+			this.url = path;
 		}
 	}
 	
@@ -190,3 +192,4 @@ public class CardDecks {
 			new CardTypeQuantity(8, CardType.CardPolitic_cat), // 
 	});
 }
+

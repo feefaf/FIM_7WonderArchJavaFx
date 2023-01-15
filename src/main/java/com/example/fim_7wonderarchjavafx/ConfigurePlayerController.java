@@ -69,9 +69,9 @@ public class ConfigurePlayerController implements Initializable {
         age = selectedAge.getValue();
 
         //CREATING THE PLAYER
-        //tempPlayer = new Player(name, age, wondersHash.get(getChoosenWonder()));
+        tempPlayer = new Player(name, age, wondersHash.get(getChoosenWonder()));
         isWonderAvailable.put(getChoosenWonder(), false);
-        //listPlayers.add(tempPlayer);
+        listPlayers.add(tempPlayer);
 
         System.out.println(getNbrOfPlayers());
 
