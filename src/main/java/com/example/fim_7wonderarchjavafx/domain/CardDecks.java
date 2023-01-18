@@ -201,5 +201,10 @@ public class CardDecks {
 			new CardTypeQuantity(8, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 
 	});
+
+	public static void main(String[] args) {
+		System.out.println(CardType.CardPolitic_emperor);
+	}
+
 }
 

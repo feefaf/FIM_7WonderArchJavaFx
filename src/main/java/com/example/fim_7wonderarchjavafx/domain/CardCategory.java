@@ -6,4 +6,6 @@ public enum CardCategory {
 	ProgressCard,
 	WarCard,
 	PoliticCard
+
+
 }

@@ -3,7 +3,7 @@ package com.example.fim_7wonderarchjavafx.domain;
 public enum WonderEnum {
 
 	Alexandrie("Alexandrie", "Alexandrie", //
-			"Prenez la première carte d'une pioche au choix, n'importe où sur la table, et posez-la devant vous"),
+			"Pre nez la première carte d'une pioche au choix, n'importe où sur la table, et posez-la devant vous"),
 	Halicarnasse("Halicarnasse", "Halicarnasse", //
 			"Prenez les 5 premières cartes de la pioche à votre gauche ou à votre droite, choisissez-en 1 et posez-la devant vous" //
 			+ "Mélangez-les cartes restantes dans leur pioche"),

@@ -12,7 +12,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-import static com.example.fim_7wonderarchjavafx.WonderHash.isWonderAvailable;
 import static com.example.fim_7wonderarchjavafx.domain.CardDecks.*;
 import static com.example.fim_7wonderarchjavafx.listPlayer.listPlayers;
 
@@ -77,7 +76,7 @@ public class GameController implements Initializable {
             wonderDecks.put("rhodes", deckCardQuantities_Rhodes);
 
 
-            List<CardDecks.CardTypeQuantity> tempDecks;
+            List<CardTypeQuantity> tempDecks;
             //
             for (int i = 0; i < 7; i++) {
                 if(i > listPlayers.size()){
@@ -178,7 +177,7 @@ public class GameController implements Initializable {
 
 
     //Game Attributes
-    private HashMap<String,List<CardDecks.CardTypeQuantity>> wonderDecks;
+    private HashMap<String, List<CardTypeQuantity>> wonderDecks;
 
     private List<CardDecks.CardTypeQuantity> PlayerGameDeck1;
     private List<CardDecks.CardTypeQuantity> PlayerGameDeck2;
@@ -188,7 +187,7 @@ public class GameController implements Initializable {
     private List<CardDecks.CardTypeQuantity> PlayerGameDeck6;
     private List<CardDecks.CardTypeQuantity> PlayerGameDeck7;
 
-    private ArrayList<List<CardDecks.CardTypeQuantity>> PlayerGameDeckList;
+    private ArrayList<List<CardTypeQuantity>> PlayerGameDeckList;
     //FXML ATTRIBUTES
     public ImageView boardDeck;
     public ImageView PeaceToken1;
