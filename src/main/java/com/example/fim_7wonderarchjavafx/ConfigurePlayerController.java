@@ -81,7 +81,7 @@ public class ConfigurePlayerController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }else{//Si il reste des heros a rajouter
+        }else{//Si il reste des joueurs a rajouter
             minusNbrOfPlayers(1);//on retire 1 au compteur de joueurs a rajouter
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ChoosePlayerWonder-View.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -150,7 +150,7 @@ public class NbrOfPlayerController implements Initializable {
 
     }
     static public int nbrOfPlayers;
-    static public HashMap<String, Boolean> availableWonders;
+    static public HashMap<String, Boolean> availableWonders = new HashMap<>();
 
 
     public static int getNbrOfPlayers() {
@@ -172,6 +172,6 @@ public class NbrOfPlayerController implements Initializable {
     ArrayList<Piece> halicarnasse = new ArrayList<>();
     ArrayList<Piece> olympie = new ArrayList<>();
     ArrayList<Piece> rhodes = new ArrayList<>();
-    HashMap<String, Wonder> wondersHash;
+    HashMap<String, Wonder> wondersHash = new HashMap<>();
 
 }

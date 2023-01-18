@@ -7,7 +7,7 @@ public class Piece {
     Player player;
     public Piece(String nom, String merveille,
                  int PointsDeVictoire, int shieldnb, int etage, boolean effet,
-                 String urlArriere, String urlAvant){
+                 String urlArriere, String urlAvant, int nombreDeMateriaux, boolean memeMateriaux){
         name = nom;
         wonder = merveille;
         pointPiece = PointsDeVictoire;
@@ -17,6 +17,8 @@ public class Piece {
         effect = effet;
         backImageUrl = urlArriere;
         frontImageUrl = urlAvant;
+        nbrOfMaterials = nombreDeMateriaux;
+        sameMaterial = memeMateriaux;
     }
 
 
@@ -68,13 +70,22 @@ public class Piece {
     private String backImageUrl;
     private String frontImageUrl;
 
+    private int nbrOfMaterials;
+    private boolean sameMaterial;
+
     //Getters
     public int getPoints_piece(){return pointPiece;}
     public String getName(){return name;}
     public boolean getStatus() {return status;}
     public String getWonder(){return wonder;}
     public boolean getEffect(){return effect;}
-
     public int getLevel(){return level;}
 
+    public int getNbrOfMaterials(){return nbrOfMaterials;}
+    public boolean getIfSameMaterial() {return sameMaterial;}
+
+    //Setters
+    public void constructPiece(){
+        status = true;
+    }
 }
