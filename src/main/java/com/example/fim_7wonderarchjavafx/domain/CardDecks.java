@@ -202,6 +202,9 @@ public class CardDecks {
 
 	});
 
+	public static void main(String[] args) {
+		System.out.println(CardType.CardPolitic_emperor);
+	}
 
 }
 
