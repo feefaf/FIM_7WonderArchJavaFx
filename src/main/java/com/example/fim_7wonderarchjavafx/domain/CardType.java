@@ -1,5 +1,7 @@
 package com.example.fim_7wonderarchjavafx.domain;
 
+import java.util.ArrayList;
+
 /**
  * type of cards
  */
@@ -11,6 +13,7 @@ public enum CardType {
     CardMaterialBrick("material:brick", Material.Brick, "card-material-brick-women.png"), //
     CardMaterialStone("material:stone", Material.Stone, "card-material-stone-stonecutter.png"), //
     CardMaterialGlass("material:glass", Material.Glass, "card-material-glass-women.png"), //
+
     // joker (mandatory replacing any material)
     CardMaterialGold("material:gold", Material.Gold, "card-material-gold-vizir.png"), //
 
@@ -88,5 +91,7 @@ public enum CardType {
     private CardType(String cardDisplayName, int laurelCount, boolean cat, String imageResource) {
         this(cardDisplayName, CardCategory.PoliticCard, null, null, 0, 0, laurelCount, cat, imageResource);
     }
+
+
 
 }
