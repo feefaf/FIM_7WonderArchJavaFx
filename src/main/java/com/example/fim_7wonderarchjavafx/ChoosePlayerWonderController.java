@@ -17,25 +17,35 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.example.fim_7wonderarchjavafx.WonderHash.isWonderAvailable;
+import static com.example.fim_7wonderarchjavafx.WonderHash.wondersHash;
 
 public class ChoosePlayerWonderController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    if ( !isWonderAvailable.get("alexandrie")){
+
+        if ( !isWonderAvailable.get("alexandrie")){
         alexandrieButton.setDisable(true);
-    }else if (!isWonderAvailable.get("babylon")){
-        babylonButton.setDisable(true);
-    }else if (!isWonderAvailable.get("cizeh")) {
-        cizehButton.setDisable(true);
-    }else if (!isWonderAvailable.get("ephese")) {
-        epheseButton.setDisable(true);
-    }else if (!isWonderAvailable.get("halicarnasse")) {
-        halicarnasseButton.setDisable(true);
-    }else if (!isWonderAvailable.get("olympie")) {
-        olympiaButton.setDisable(true);
-    }else if (!isWonderAvailable.get("rhodes")) {
-        rhodesButton.setDisable(true);
-    }
+        }
+        if ( !isWonderAvailable.get("babylon")){
+            babylonButton.setDisable(true);
+        }
+        if ( !isWonderAvailable.get("gizeh")) {
+            System.out.println("j'y passe");
+            cizehButton.setDisable(true);
+        }
+        if ( !isWonderAvailable.get("ephese")) {
+            epheseButton.setDisable(true);
+        }
+        if (!isWonderAvailable.get("halicarnasse")) {
+            halicarnasseButton.setDisable(true);
+        }
+        if (!isWonderAvailable.get("olympie")) {
+            olympiaButton.setDisable(true);
+        }
+        if (!isWonderAvailable.get("rhodes")) {
+            rhodesButton.setDisable(true);
+        }
+
     }
     public Label OrderLabel;
 
@@ -69,7 +79,7 @@ public class ChoosePlayerWonderController implements Initializable {
     }
 
     public void onCizehClick(MouseEvent event) throws IOException {
-        setChoosenWonder("cizeh");
+        setChoosenWonder("gizeh");
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/ConfigurePlayer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

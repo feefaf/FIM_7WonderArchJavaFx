@@ -8,6 +8,7 @@ public class Player {
     public Player(String nom, int age, Wonder wonder){
         name = nom;
         this.age = age;
+        this.wonder = wonder;
         partyPoint = 0;
         militaryPoint = 0;
         shieldNb = 0;
@@ -20,6 +21,7 @@ public class Player {
         this.ressourceList.put("glass", 0);
         this.ressourceList.put("gold", 0);
 
+        this.playerToken = new HashMap<>();
         this.playerToken.put("Urbanisme", 0);
         this.playerToken.put("Artisanat", 0);
         this.playerToken.put("Joaillerie", 0);

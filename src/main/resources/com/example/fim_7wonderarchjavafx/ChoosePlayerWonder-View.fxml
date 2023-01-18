@@ -14,9 +14,9 @@
             <Image url="@../../../images/decks/deck-alexandrie.png" />
          </image></ImageView>
       <Button fx:id="alexandrieButton" layoutX="23.0" layoutY="607.0" mnemonicParsing="false" onMouseClicked="#onAlexandrieClick" prefHeight="54.0" prefWidth="144.0" text="Alexandrie" />
-      <Label fx:id="OrderLabel" alignment="CENTER" layoutX="352.0" layoutY="39.0" prefHeight="41.0" prefWidth="495.0">
+      <Label fx:id="OrderLabel" alignment="CENTER" layoutX="206.0" layoutY="39.0" prefHeight="62.0" prefWidth="811.0" text="Choisissez votre Wonder !" textFill="#963f3f">
          <font>
-            <Font name="High Tower Text" size="23.0" />
+            <Font name="High Tower Text" size="59.0" />
          </font>
       </Label>
       <ImageView fitHeight="412.0" fitWidth="124.0" layoutX="202.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">

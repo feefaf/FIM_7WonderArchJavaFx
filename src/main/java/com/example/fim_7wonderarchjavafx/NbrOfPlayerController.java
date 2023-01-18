@@ -19,6 +19,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.example.fim_7wonderarchjavafx.WonderHash.isWonderAvailable;
+import static com.example.fim_7wonderarchjavafx.WonderHash.wondersHash;
 
 public class NbrOfPlayerController implements Initializable {
 
@@ -26,7 +27,7 @@ public class NbrOfPlayerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isWonderAvailable.put("alexandrie", true);
         isWonderAvailable.put("babylon", true);
-        isWonderAvailable.put("cizeh", true);
+        isWonderAvailable.put("gizeh", true);
         isWonderAvailable.put("ephese", true);
         isWonderAvailable.put("halicarnasse", true);
         isWonderAvailable.put("olympie", true);
@@ -51,11 +52,11 @@ public class NbrOfPlayerController implements Initializable {
         ephese.add(new Piece("Ephese04","ephese",5,0,2,true,"src/main/resources/images/wonders/ephese/piece-back-ephese-4.png","src/main/resources/images/wonders/ephese/piece-front-ephese-4.png",3,true));
         ephese.add(new Piece("Ephese05","ephese",7,0,3,false,"src/main/resources/images/wonders/ephese/piece-back-ephese-5.png","src/main/resources/images/wonders/ephese/piece-front-ephese-5.png",4,false));
 
-        giseh.add(new Piece("Giseh01","giseh",4,0,1,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-1.png","src/main/resources/images/wonders/giseh/piece-front-giseh-1.png",2,false));
-        giseh.add(new Piece("Giseh02","giseh",5,0,2,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-2.png","src/main/resources/images/wonders/giseh/piece-front-giseh-2.png",2,true));
-        giseh.add(new Piece("Giseh03","giseh",6,0,3,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-3.png","src/main/resources/images/wonders/giseh/piece-front-giseh-3.png",3,false));
-        giseh.add(new Piece("Giseh04","giseh",7,0,4,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-4.png","src/main/resources/images/wonders/giseh/piece-front-giseh-4.png",3,true));
-        giseh.add(new Piece("Giseh05","giseh",8,0,5,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-5.png","src/main/resources/images/wonders/giseh/piece-front-giseh-5.png",4,false));
+        gizeh.add(new Piece("Gizeh01","gizeh",4,0,1,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-1.png","src/main/resources/images/wonders/giseh/piece-front-giseh-1.png",2,false));
+        gizeh.add(new Piece("Gizeh02","gizeh",5,0,2,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-2.png","src/main/resources/images/wonders/giseh/piece-front-giseh-2.png",2,true));
+        gizeh.add(new Piece("Gizeh03","gizeh",6,0,3,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-3.png","src/main/resources/images/wonders/giseh/piece-front-giseh-3.png",3,false));
+        gizeh.add(new Piece("Gizeh04","gizeh",7,0,4,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-4.png","src/main/resources/images/wonders/giseh/piece-front-giseh-4.png",3,true));
+        gizeh.add(new Piece("Gizeh05","gizeh",8,0,5,false,"src/main/resources/images/wonders/giseh/piece-back-giseh-5.png","src/main/resources/images/wonders/giseh/piece-front-giseh-5.png",4,false));
 
         halicarnasse.add(new Piece("Halicarnasse01","halicarnasse",3,0,1,false,"src/main/resources/images/wonders/halicarnasse/piece-back-halicarnasse-1.png","src/main/resources/images/wonders/halicarnasse/piece-front-halicarnasse-1.png",2,false));
         halicarnasse.add(new Piece("Halicarnasse02","halicarnasse",3,0,2,true,"src/main/resources/images/wonders/halicarnasse/piece-back-halicarnasse-2.png","src/main/resources/images/wonders/halicarnasse/piece-front-halicarnasse-2.png",2,true));
@@ -78,7 +79,7 @@ public class NbrOfPlayerController implements Initializable {
         wondersHash.put("alexandrie", new  Wonder("alexandrie", alexandrie));
         wondersHash.put("babylon",new Wonder("babylon", babylon));
         wondersHash.put("ephese",new Wonder("ephese", ephese));
-        wondersHash.put("giseh", new Wonder("giseh", giseh));
+        wondersHash.put("gizeh", new Wonder("gizeh", gizeh));
         wondersHash.put("halicarnasse", new Wonder("halicarnasse", halicarnasse));
         wondersHash.put("olympie", new Wonder("olympie", olympie));
         wondersHash.put("rhodes", new Wonder("rhodes", rhodes));
@@ -150,8 +151,6 @@ public class NbrOfPlayerController implements Initializable {
 
     }
     static public int nbrOfPlayers;
-    static public HashMap<String, Boolean> availableWonders = new HashMap<>();
-
 
     public static int getNbrOfPlayers() {
         return nbrOfPlayers;
@@ -165,13 +164,13 @@ public class NbrOfPlayerController implements Initializable {
     private Scene scene;
     private Parent root;
 
+
+
     ArrayList<Piece> alexandrie = new ArrayList<>();
     ArrayList<Piece> babylon = new ArrayList<>();
     ArrayList<Piece> ephese = new ArrayList<>();
-    ArrayList<Piece> giseh = new ArrayList<>();
+    ArrayList<Piece> gizeh = new ArrayList<>();
     ArrayList<Piece> halicarnasse = new ArrayList<>();
     ArrayList<Piece> olympie = new ArrayList<>();
     ArrayList<Piece> rhodes = new ArrayList<>();
-    HashMap<String, Wonder> wondersHash = new HashMap<>();
-
 }

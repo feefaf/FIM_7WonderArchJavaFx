@@ -48,14 +48,13 @@ public class ConfigurePlayerController implements Initializable {
 
             WonderDeckImageUrl.put("alexandrie", "src/main/resources/images/decks/deck-alexandrie.png");
             WonderDeckImageUrl.put("babylon", "src/main/resources/images/decks/deck-babylon.png");
-            WonderDeckImageUrl.put("cizeh", "src/main/resources/images/decks/deck-cizeh.png");
+            WonderDeckImageUrl.put("gizeh", "src/main/resources/images/decks/deck-cizeh.png");
             WonderDeckImageUrl.put("ephese", "src/main/resources/images/decks/deck-ephese.png");
             WonderDeckImageUrl.put("halicarnasse", "src/main/resources/images/decks/deck-halicarnasse.png");
             WonderDeckImageUrl.put("olympie", "src/main/resources/images/decks/deck-olympie.png");
             WonderDeckImageUrl.put("rhodes", "src/main/resources/images/decks/deck-rhodes.png");
 
-            System.out.println(getChoosenWonder());
-            System.out.println(WonderDeckImageUrl.get(getChoosenWonder()));
+
             wonderImageSlot.setImage(chargeImage(WonderDeckImageUrl.get(getChoosenWonder())));
 
         }catch (Exception e) {
@@ -69,6 +68,7 @@ public class ConfigurePlayerController implements Initializable {
         age = selectedAge.getValue();
 
         //CREATING THE PLAYER
+        System.out.println(wondersHash.get("alexandrie"));
         tempPlayer = new Player(name, age, wondersHash.get(getChoosenWonder()));
         isWonderAvailable.put(getChoosenWonder(), false);
         listPlayers.add(tempPlayer);
@@ -76,9 +76,9 @@ public class ConfigurePlayerController implements Initializable {
         System.out.println(getNbrOfPlayers());
 
         if (getNbrOfPlayers() <= 1){//Si on a fini d'ajouter les joueurs.
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/javafxrpgmaizafares/CombatScene-view.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/fim_7wonderarchjavafx/Game-view.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }else{//Si il reste des joueurs a rajouter

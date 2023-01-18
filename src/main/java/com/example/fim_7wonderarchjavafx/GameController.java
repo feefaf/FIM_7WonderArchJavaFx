@@ -26,6 +26,7 @@ public class GameController implements Initializable {
             //Je liste tout les attribut FXML dans des arraylist pour les récuperer dynamiquement
 
             //Les Peace Token
+            PeaceTokenList = new ArrayList<>();
             PeaceTokenList.add(PeaceToken1);
             PeaceTokenList.add(PeaceToken2);
             PeaceTokenList.add(PeaceToken3);
@@ -34,6 +35,7 @@ public class GameController implements Initializable {
             PeaceTokenList.add(PeaceToken6);
 
             //Les ImagesView des slot des joueurs
+            PlayerPositionSlotList = new ArrayList<>();
             PlayerPositionSlotList.add(PlayerPositionSlot1);
             PlayerPositionSlotList.add(PlayerPositionSlot2);
             PlayerPositionSlotList.add(PlayerPositionSlot3);
@@ -43,6 +45,7 @@ public class GameController implements Initializable {
             PlayerPositionSlotList.add(PlayerPositionSlot7);
 
             //Les Labels du nom des joueurs
+            PlayerNameLabelList = new ArrayList<>();
             PlayerNameLabelList.add(PlayerNameLabel1);
             PlayerNameLabelList.add(PlayerNameLabel2);
             PlayerNameLabelList.add(PlayerNameLabel3);
@@ -52,6 +55,7 @@ public class GameController implements Initializable {
             PlayerNameLabelList.add(PlayerNameLabel7);
 
             //La liste des decks des joueurs
+            PlayerDeckList = new ArrayList<>();
             PlayerDeckList.add(PlayerDeck1);
             PlayerDeckList.add(PlayerDeck2);
             PlayerDeckList.add(PlayerDeck3);
@@ -62,14 +66,16 @@ public class GameController implements Initializable {
 
 
             //la liste des progress Token
+            progressTokenList = new ArrayList<>();
             progressTokenList.add(progressTokenSlot1);
             progressTokenList.add(progressTokenSlot2);
             progressTokenList.add(progressTokenSlot3);
 
             //J'apporte tout les decks
+            wonderDecks = new HashMap<>();
             wonderDecks.put("alexandrie", deckCardQuantities_Alexandrie);
             wonderDecks.put("babylon", deckCardQuantities_Babylon);
-            wonderDecks.put("cizeh", deckCardQuantities_Gizeh);
+            wonderDecks.put("gizeh", deckCardQuantities_Gizeh);
             wonderDecks.put("ephese", deckCardQuantities_Ephese);
             wonderDecks.put("halicarnasse", deckCardQuantities_Halicarnasse);
             wonderDecks.put("olympie", deckCardQuantities_Olympie);
@@ -78,14 +84,16 @@ public class GameController implements Initializable {
 
             List<CardTypeQuantity> tempDecks;
             //
+            PlayerGameDeckList = new ArrayList<>();
             for (int i = 0; i < 7; i++) {
-                if(i > listPlayers.size()){
+                if(i < listPlayers.size()){
                     //=============================================================================
                     //ICI JE DOIS UTILISER LA METHODE QUE MATTHIEU VA FAIRE!!!!!!!!!!!!!!!!!!!!!!!!
                     //=============================================================================
 
                     //PlayerPositionSlotList.get(i)
                     PlayerNameLabelList.get(i).setText(listPlayers.get(i).getName());
+                    System.out.println(listPlayers.get(i));
                     tempDecks = wonderDecks.get(listPlayers.get(i).getWonder().getName());
                     Collections.shuffle(tempDecks);
                     PlayerGameDeckList.add(tempDecks);
@@ -236,7 +244,7 @@ public class GameController implements Initializable {
     public ImageView PlayerDeck6;
     public ImageView PlayerDeck7;
 
-        private ArrayList<ImageView> PlayerDeckList;
+    private ArrayList<ImageView> PlayerDeckList;
 
 
     public ImageView hiddenProgressTokenDeck;
