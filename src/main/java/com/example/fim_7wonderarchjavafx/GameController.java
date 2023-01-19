@@ -2,6 +2,7 @@ package com.example.fim_7wonderarchjavafx;
 
 import com.example.fim_7wonderarchjavafx.domain.CardDecks;
 import com.example.fim_7wonderarchjavafx.domain.Player;
+import com.example.fim_7wonderarchjavafx.domain.TokenProgress;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -22,17 +23,15 @@ public class GameController implements Initializable {
         try {
             //On commence par trier les joueurs en fonction de leurs Age
             Collections.sort(listPlayers, new AgeComparator());
+            //Nombre de joueurs
+            nbrOfPlayers = listPlayers.size();
+
+            //Creation de la liste de tout les token progress
+            progressTokenDeck = new ArrayList<>();
+            progressTokenDeck.add(new TokenProgress("architecture", "src/main/resources/images/tokens-progress/token-architecture.png"));
+
 
             //Je liste tout les attribut FXML dans des arraylist pour les récuperer dynamiquement
-
-            //Les Peace Token
-            PeaceTokenList = new ArrayList<>();
-            PeaceTokenList.add(PeaceToken1);
-            PeaceTokenList.add(PeaceToken2);
-            PeaceTokenList.add(PeaceToken3);
-            PeaceTokenList.add(PeaceToken4);
-            PeaceTokenList.add(PeaceToken5);
-            PeaceTokenList.add(PeaceToken6);
 
             //Les ImagesView des slot des joueurs
             PlayerPositionSlotList = new ArrayList<>();
@@ -66,10 +65,32 @@ public class GameController implements Initializable {
 
 
             //la liste des progress Token
-            progressTokenList = new ArrayList<>();
-            progressTokenList.add(progressTokenSlot1);
-            progressTokenList.add(progressTokenSlot2);
-            progressTokenList.add(progressTokenSlot3);
+            progressTokenImagesList = new ArrayList<>();
+            progressTokenImagesList.add(progressTokenSlot1);
+            progressTokenImagesList.add(progressTokenSlot2);
+            progressTokenImagesList.add(progressTokenSlot3);
+
+            //Les Peace Token
+            PeaceTokenList = new ArrayList<>();
+
+            PeaceToken1.setImage(chargeImage("src/main/resources/images/tokens/token-conflict-peace.png"));
+            PeaceTokenList.add(PeaceToken1);
+            PeaceToken2.setImage(chargeImage("src/main/resources/images/tokens/token-conflict-peace.png"));
+            PeaceTokenList.add(PeaceToken2);
+            PeaceToken3.setImage(chargeImage("src/main/resources/images/tokens/token-conflict-peace.png"));
+            PeaceTokenList.add(PeaceToken3);
+            if(nbrOfPlayers >= 4){
+                PeaceToken4.setImage(chargeImage("src/main/resources/images/tokens/token-conflict-peace.png"));
+                PeaceTokenList.add(PeaceToken4);
+                if(nbrOfPlayers >=5){
+                    PeaceToken5.setImage(chargeImage("src/main/resources/images/tokens/token-conflict-peace.png"));
+                    PeaceTokenList.add(PeaceToken5);
+                    if(nbrOfPlayers >=6){
+                        PeaceToken6.setImage(chargeImage("src/main/resources/images/tokens/token-conflict-peace.png"));
+                        PeaceTokenList.add(PeaceToken6);
+                    }
+                }
+            }
 
             //J'apporte tout les decks
             wonderDecks = new HashMap<>();
@@ -81,12 +102,14 @@ public class GameController implements Initializable {
             wonderDecks.put("olympie", deckCardQuantities_Olympie);
             wonderDecks.put("rhodes", deckCardQuantities_Rhodes);
 
+            boardDeck = new ArrayList<>();
+            boardDeck = deckCardQuantities_Extra;
 
             List<CardTypeQuantity> tempDecks;
             //
             PlayerGameDeckList = new ArrayList<>();
             for (int i = 0; i < 7; i++) {
-                if(i < listPlayers.size()){
+                if(i < nbrOfPlayers){
                     //=============================================================================
                     //ICI JE DOIS UTILISER LA METHODE QUE MATTHIEU VA FAIRE!!!!!!!!!!!!!!!!!!!!!!!!
                     //=============================================================================
@@ -100,16 +123,22 @@ public class GameController implements Initializable {
 
                     PlayerDeckList.get(i).setImage(chargeImage( tempDecks.get(0).geturl() ));
 
-
                 }else{
                     PlayerPositionSlotList.get(i).setDisable(true);
                     PlayerNameLabelList.get(i).setDisable(true);
                     PlayerDeckList.get(i).setDisable(true);
+
                 }
+
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void GameProcess(ArrayList<ImageView> PlayerPositionSlotList){
+
+
     }
 
 
@@ -127,6 +156,7 @@ public class GameController implements Initializable {
 
     //FXML METHODS
     public void onBoardDeckClicked(MouseEvent event) {
+
     }
 
 
@@ -185,6 +215,10 @@ public class GameController implements Initializable {
 
 
     //Game Attributes
+
+    private int nbrOfPlayers;
+    private ArrayList<TokenProgress> progressTokenDeck;
+    private List<CardDecks.CardTypeQuantity> boardDeck;
     private HashMap<String, List<CardTypeQuantity>> wonderDecks;
 
     private List<CardDecks.CardTypeQuantity> PlayerGameDeck1;
@@ -197,7 +231,7 @@ public class GameController implements Initializable {
 
     private ArrayList<List<CardTypeQuantity>> PlayerGameDeckList;
     //FXML ATTRIBUTES
-    public ImageView boardDeck;
+    public ImageView boardDeckImage;
     public ImageView PeaceToken1;
     public ImageView PeaceToken2;
     public ImageView PeaceToken3;
@@ -252,7 +286,7 @@ public class GameController implements Initializable {
     public ImageView progressTokenSlot2;
     public ImageView progressTokenSlot3;
 
-    private ArrayList<ImageView> progressTokenList;
+    private ArrayList<ImageView> progressTokenImagesList;
 
     public ImageView militaryVictoryStack;
 

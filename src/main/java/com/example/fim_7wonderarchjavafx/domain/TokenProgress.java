@@ -1,16 +1,13 @@
 package com.example.fim_7wonderarchjavafx.domain;
 
 public class TokenProgress {
-
-    public TokenProgress(String nom/*, boolean effect*/){
+    public TokenProgress(String nom, String url){
         this.name = nom;
-        //this.effect = false;
+        this.url = url;
     }
 
-
-
-    //public boolean getEffect(){return  effect;}
     public String getName(){return  name;}
+    public String getUrl(){return url;}
 
     //public void setEffect(boolean effect){ this.effect = effect;}
 
@@ -153,4 +150,5 @@ public class TokenProgress {
 
 
     private String name;
+    private String url;
 }
