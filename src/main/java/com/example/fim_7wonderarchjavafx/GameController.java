@@ -167,7 +167,21 @@ public class GameController implements Initializable {
 
 
 
+
     //FXML METHODS
+
+    public void WonderJavaFXDisplayer(Player player, int x, float y){
+        //Cette fonction permettra d'afficher la merveille en fonction de
+        //sa localisation sur l'ecran, de sa localisation
+        String wonderName = player.getWonder().getName();
+        switch (wonderName){
+            case "alexandrie":
+
+        }
+
+
+
+    }
     public void onBoardDeckClicked(MouseEvent event) {
 
     }
