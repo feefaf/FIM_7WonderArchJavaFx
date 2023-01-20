@@ -1,5 +1,7 @@
 package com.example.fim_7wonderarchjavafx.domain;
 
+import java.util.Map;
+
 public class TokenProgress {
     public TokenProgress(String nom, String url){
         this.name = nom;
@@ -25,7 +27,14 @@ public class TokenProgress {
     }
 
     public void cultureEffect(Player player){
-
+        if (player.getPlayerToken().get("Culture") == 1){
+            player.gainPartyPoint(4);
+        } else if (player.getPlayerToken().get("Culture") == 2) {
+            player.gainPartyPoint(2);
+        }
+        else {
+            System.out.println("Vous ne possédez pas le jeton culture !");
+        }
     }
 
     public void scienceEffect(Player player){
@@ -70,12 +79,22 @@ public class TokenProgress {
     }
 
     public void educationEffect(Player player){
+        int cpt = 0;
+        for (Map.Entry<String,Integer> valueToken : player.getPlayerToken().entrySet()){
+            int value = valueToken.getValue();
+            if (value>=1){
+                cpt+=2;
+            }
+        }
+        player.gainPartyPoint(cpt);
 
     }
 
-    //Fonction qui va appliquer l'effet de la wonder
-    public void directApplyTokenEffect(String nameToken,  Player player){
-            switch (nameToken){
+    //Fonction qui va appliquer l'effet des jetons dès que l'on pioche une carte
+    public void directApplyTokenEffect(Player player){
+        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()){
+            String key = nameToken.getKey();
+            switch (key){
                 case "Economie":
                     economieEffect(player);
                     break;
@@ -83,11 +102,14 @@ public class TokenProgress {
                     tactiqueEffect(player);
                     break;
             }
-
+        }
     }
 
-    public void piocheApplyTokenEffect(String nameToken,  Player player){
-            switch (nameToken){
+    // Methode qui va appliquer les effects des jetons lorsque l'on pioche une carte
+    public void piocheApplyTokenEffect(Player player){
+        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()){
+            String key = nameToken.getKey();
+            switch (key){
                 case "Urbanisme":
                     urbanismeEffect(player);
                     break;
@@ -103,30 +125,35 @@ public class TokenProgress {
                 case "Propagande":
                     propagandeEffect(player);
                     break;
-
             }
 
         }
+    }
 
 
-
-    public void wonderBuiltApplyTokenEffect(String nameToken,  Player player){
-            switch (nameToken){
+    // Methode qui va appliquer les effect des jetons lors de la construction d'une wonder
+    public void wonderBuiltApplyTokenEffect(Player player){
+        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()) {
+            String key = nameToken.getKey();
+            switch (key) {
                 case "Architecture":
                     architectureEffect(player);
                     break;
-                case "Ingénierie":
+                case "Ingenierie":
                     ingenieurieEffect(player);
                     break;
             }
 
-
+        }
 
     }
 
-    public void endApplyTokenEffect(String nameToken,  Player player){
-            switch (nameToken){
-                case "Décoration":
+    // Methode qui va appliquer les effect des jetons lors de la fin de la partie
+    public void endApplyTokenEffect(Player player){
+        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()) {
+            String key = nameToken.getKey();
+            switch (key) {
+                case "Decoration":
                     decorationEffect(player);
                     break;
                 case "Politique":
@@ -142,7 +169,7 @@ public class TokenProgress {
                     cultureEffect(player);
                     break;
             }
-
+        }
 
     }
 

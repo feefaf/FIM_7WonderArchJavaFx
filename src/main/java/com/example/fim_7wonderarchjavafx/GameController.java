@@ -28,7 +28,20 @@ public class GameController implements Initializable {
 
             //Creation de la liste de tout les token progress
             progressTokenDeck = new ArrayList<>();
-            progressTokenDeck.add(new TokenProgress("architecture", "src/main/resources/images/tokens-progress/token-architecture.png"));
+            progressTokenDeck.add(new TokenProgress("Architecture", "src/main/resources/images/tokens-progress/token-architecture.png"));
+            progressTokenDeck.add(new TokenProgress("Economie", "src/main/resources/images/tokens-progress/token-economy.png"));
+            progressTokenDeck.add(new TokenProgress("Tactique", "src/main/resources/images/tokens-progress/token-tactic.png"));
+            progressTokenDeck.add(new TokenProgress("Urbanisme", "src/main/resources/images/tokens-progress/token-urbanism.png"));
+            progressTokenDeck.add(new TokenProgress("Artisanat", "src/main/resources/images/tokens-progress/token-artsAndCrafts.png"));
+            progressTokenDeck.add(new TokenProgress("Joaillerie", "src/main/resources/images/tokens-progress/token-jewelry.png"));
+            progressTokenDeck.add(new TokenProgress("Science", "src/main/resources/images/tokens-progress/token-science.png"));
+            progressTokenDeck.add(new TokenProgress("Propagande", "src/main/resources/images/tokens-progress/token-propaganda.png"));
+            progressTokenDeck.add(new TokenProgress("Ingenierie", "src/main/resources/images/tokens-progress/token-ingeniery.png"));
+            progressTokenDeck.add(new TokenProgress("Decoration", "src/main/resources/images/tokens-progress/token-decoration.png"));
+            progressTokenDeck.add(new TokenProgress("Politique", "src/main/resources/images/tokens-progress/token-politic.png"));
+            progressTokenDeck.add(new TokenProgress("Strategie", "src/main/resources/images/tokens-progress/token-strategy.png"));
+            progressTokenDeck.add(new TokenProgress("Education", "src/main/resources/images/tokens-progress/token-green-token2.png"));
+            progressTokenDeck.add(new TokenProgress("Culture", "src/main/resources/images/tokens-progress/token-culture.png"));
 
 
             //Je liste tout les attribut FXML dans des arraylist pour les récuperer dynamiquement

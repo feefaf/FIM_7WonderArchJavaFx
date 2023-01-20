@@ -60,6 +60,7 @@ public class Player {
     }
 
     // Vérifie si les ressources courantes peuvent payer le cout spécifié
+    /*
     public boolean canAfford(HashMap<String, Integer> cout) {
         for (Map.Entry<String, Integer> entry : cout.entrySet()) {
             String ressource = entry.getKey();
@@ -70,8 +71,8 @@ public class Player {
         }
         return true;
     }
-
-
+*/
+/*
     public void payCost(HashMap<String, Integer> cout) {
         // Déduit le coût spécifié des ressources courantes
         for (Map.Entry<String, Integer> entry : cout.entrySet()) {
@@ -81,7 +82,7 @@ public class Player {
             this.ressourceList.put(ressource, ressourcesActuelles - quantity);
         }
     }
-
+*/
     public void add_ressources(HashMap<String, Integer> cout) {
         // Ajoute les ressources spécifiées aux ressources courantes
         for (Map.Entry<String, Integer> entry : cout.entrySet()) {
@@ -131,6 +132,8 @@ public class Player {
     public boolean getControlCat(){return controlCat;}
     public ArrayList<Card> getDeckCard(){return deckCard;}
     public HashMap<String, Integer> getRessourceList(){return ressourceList;}
+    public HashMap<String, Integer> getPlayerToken(){return playerToken;}
+
     public int getShieldNb(){return shieldNb;}
 
     //Attribute
