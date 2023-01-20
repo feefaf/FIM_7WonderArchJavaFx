@@ -13,7 +13,6 @@ public class TokenProgress {
 
     //public void setEffect(boolean effect){ this.effect = effect;}
 
-
     public void urbanismeEffect(Player player){
 
     }
@@ -27,6 +26,7 @@ public class TokenProgress {
     }
 
     public void cultureEffect(Player player){
+        // Si le joueur à 1 fois le jeton et gagne 4 pts et si il a deux fois le jetons
         if (player.getPlayerToken().get("Culture") == 1){
             player.gainPartyPoint(4);
         } else if (player.getPlayerToken().get("Culture") == 2) {
@@ -79,6 +79,7 @@ public class TokenProgress {
     }
 
     public void educationEffect(Player player){
+        //
         int cpt = 0;
         for (Map.Entry<String,Integer> valueToken : player.getPlayerToken().entrySet()){
             int value = valueToken.getValue();
@@ -90,88 +91,9 @@ public class TokenProgress {
 
     }
 
-    //Fonction qui va appliquer l'effet des jetons dès que l'on pioche une carte
-    public void directApplyTokenEffect(Player player){
-        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()){
-            String key = nameToken.getKey();
-            switch (key){
-                case "Economie":
-                    economieEffect(player);
-                    break;
-                case "Tactique":
-                    tactiqueEffect(player);
-                    break;
-            }
-        }
-    }
-
-    // Methode qui va appliquer les effects des jetons lorsque l'on pioche une carte
-    public void piocheApplyTokenEffect(Player player){
-        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()){
-            String key = nameToken.getKey();
-            switch (key){
-                case "Urbanisme":
-                    urbanismeEffect(player);
-                    break;
-                case "Artisanat":
-                    artisanatEffect(player);
-                    break;
-                case "Joaillerie":
-                    joaillerieEffect(player);
-                    break;
-                case "Science":
-                    scienceEffect(player);
-                    break;
-                case "Propagande":
-                    propagandeEffect(player);
-                    break;
-            }
-
-        }
-    }
 
 
-    // Methode qui va appliquer les effect des jetons lors de la construction d'une wonder
-    public void wonderBuiltApplyTokenEffect(Player player){
-        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()) {
-            String key = nameToken.getKey();
-            switch (key) {
-                case "Architecture":
-                    architectureEffect(player);
-                    break;
-                case "Ingenierie":
-                    ingenieurieEffect(player);
-                    break;
-            }
 
-        }
-
-    }
-
-    // Methode qui va appliquer les effect des jetons lors de la fin de la partie
-    public void endApplyTokenEffect(Player player){
-        for (Map.Entry<String,Integer> nameToken : player.getPlayerToken().entrySet()) {
-            String key = nameToken.getKey();
-            switch (key) {
-                case "Decoration":
-                    decorationEffect(player);
-                    break;
-                case "Politique":
-                    politiqueEffect(player);
-                    break;
-                case "Strategie":
-                    strategieEffect(player);
-                    break;
-                case "Education":
-                    educationEffect(player);
-                    break;
-                case "Culture":
-                    cultureEffect(player);
-                    break;
-            }
-        }
-
-    }
 
 
 

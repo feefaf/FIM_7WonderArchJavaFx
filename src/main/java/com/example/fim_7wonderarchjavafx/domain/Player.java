@@ -97,19 +97,87 @@ public class Player {
     // Fonction qui permettra de verifier si on a le jeton ou pas
 
     public boolean gotToken(String nameToken) {
-        if (playerToken.get(nameToken) == 1) {
+        if (playerToken.get(nameToken) >= 1) {
             playerToken.replace(nameToken,0);
             return true;
         }
         return false;
     }
 
+    //Fonction qui va appliquer l'effet des jetons dès que l'on pioche une carte
+    public void directApplyTokenEffect(TokenProgress tokenProgress){
+                if(playerToken.get("Economie")>=1) {
+                    tokenProgress.economieEffect(this);
+                }
+                else if (playerToken.get("Tactique")>=1){
+                    tokenProgress.tactiqueEffect(this);
+                }
+            }
+
+
+    // Methode qui va appliquer les effects des jetons lorsque l'on pioche une carte
+    public void piocheApplyTokenEffect(TokenProgress tokenProgress){
+                if(playerToken.get("Urbanisme")>=1){
+                    tokenProgress.urbanismeEffect(this);
+                }
+                else if (playerToken.get("Artisanat")>=1){
+                    tokenProgress.artisanatEffect(this);
+                }
+                else if (playerToken.get("Joaillerie")>=1){
+                    tokenProgress.joaillerieEffect(this);
+                }
+                else if(playerToken.get("Science")>=1){
+                    tokenProgress.scienceEffect(this);
+                }
+                else if(playerToken.get("Propagande")>=1){
+                    tokenProgress.propagandeEffect(this);
+                }
+            }
+
+    // Methode qui va appliquer les effect des jetons lors de la construction d'une wonder
+    public void wonderBuiltApplyTokenEffect(TokenProgress tokenProgress){
+                if(playerToken.get("Architecture")>=1) {
+                    tokenProgress.architectureEffect(this);
+                }
+                else if(playerToken.get("Ingenierie")>=1) {
+                    tokenProgress.ingenieurieEffect(this);
+                }
+            }
+
+
+
+
+
+    // Methode qui va appliquer les effect des jetons lors de la fin de la partie
+    public void endApplyTokenEffect(TokenProgress tokenProgress){
+                if(playerToken.get("Decoration") >=1) {
+                    tokenProgress.decorationEffect(this);
+                }
+                else if(playerToken.get("Politique")>=1){
+                    tokenProgress.politiqueEffect(this);
+                }
+                else if(playerToken.get("Strategie")>=1){
+                    tokenProgress.strategieEffect(this);
+                }
+                else if(playerToken.get("Education")>=1){
+                    tokenProgress.educationEffect(this);
+                }
+                else if(playerToken.get("Culture")>=1){
+                    tokenProgress.cultureEffect(this);
+                }
+            }
+
+
+
+
+
+
     //Gain
-    public void gainPartyPoint(int points){
-        partyPoint+=points;
-    }
+    public void gainPartyPoint(int points){partyPoint+=points;}
     public void gainMilitaryPoint(int points){ militaryPoint+=points;}
     public void gainShieldNb(int points){militaryPoint+=points;}
+
+
 
     //Setters
     public void attributeWonder(Wonder merveille){
