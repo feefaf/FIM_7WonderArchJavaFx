@@ -21,6 +21,16 @@ public class Player {
         this.ressourceList.put("glass", 0);
         this.ressourceList.put("gold", 0);
 
+        this.ressourceList.put("law", 0);
+        this.ressourceList.put("mechanic", 0);
+        this.ressourceList.put("architect", 0);
+
+        this.ressourceList.put("barbarian", 0);
+        this.ressourceList.put("centurion", 0);
+        this.ressourceList.put("archer", 0);
+
+        this.ressourceList.put("emperor", 0);
+
         this.playerToken = new HashMap<>();
         this.playerToken.put("Urbanisme", 0);
         this.playerToken.put("Artisanat", 0);
@@ -83,14 +93,9 @@ public class Player {
         }
     }
 */
-    public void add_ressources(HashMap<String, Integer> cout) {
+    public void add_ressources(String key) {
         // Ajoute les ressources spécifiées aux ressources courantes
-        for (Map.Entry<String, Integer> entry : cout.entrySet()) {
-            String ressource = entry.getKey();
-            int quantity = entry.getValue();
-            int ressourcesActuelles = this.ressourceList.get(ressource);
-            this.ressourceList.put(ressource, ressourcesActuelles + quantity);
-        }
+        ressourceList.put(key, ressourceList.get(key)+1);
     }
 
 

@@ -8,28 +8,28 @@ import java.util.ArrayList;
 public enum CardType {
 
     // Material Cards
-    CardMaterialWood("material:wood", Material.Wood, "card-material-wood-lumberjack.png"), //
-    CardMaterialPaper("material:paper", Material.Paper, "card-material-paper-women.png"), //
-    CardMaterialBrick("material:brick", Material.Brick, "card-material-brick-women.png"), //
-    CardMaterialStone("material:stone", Material.Stone, "card-material-stone-stonecutter.png"), //
-    CardMaterialGlass("material:glass", Material.Glass, "card-material-glass-women.png"), //
+    CardMaterialWood("wood", Material.Wood, "card-material-wood-lumberjack.png"), //
+    CardMaterialPaper("paper", Material.Paper, "card-material-paper-women.png"), //
+    CardMaterialBrick("brick", Material.Brick, "card-material-brick-women.png"), //
+    CardMaterialStone("stone", Material.Stone, "card-material-stone-stonecutter.png"), //
+    CardMaterialGlass("glass", Material.Glass, "card-material-glass-women.png"), //
 
     // joker (mandatory replacing any material)
-    CardMaterialGold("material:gold", Material.Gold, "card-material-gold-vizir.png"), //
+    CardMaterialGold("gold", Material.Gold, "card-material-gold-vizir.png"), //
 
     // Science cards
-    CardScienceLaw("science:law", "law", "card-progress-law.png"), //
-    CardScienceMechanic("science:mechanic", "mechanic", "card-progress-mechanic.png"), //
-    CardScienceArchitect("science:architect", "architect", "card-progress-architect.png"), //
+    CardScienceLaw("law", "law", "card-progress-law.png"), //
+    CardScienceMechanic("mechanic", "mechanic", "card-progress-mechanic.png"), //
+    CardScienceArchitect("architect", "architect", "card-progress-architect.png"), //
 
     // War Cards
-    CardWar_barbarian("war:barbarian", 1, 1, "card-war-barbarian-1corn.png"), //
-    CardWar_centurion("war:centurion", 1, 0, "card-war-centurion.png"),  //
-    CardWar_archer("war:archer", 1, 2, "card-war-archer-2corns.png"), //
+    CardWar_barbarian("barbarian", 1, 1, "card-war-barbarian-1corn.png"), //
+    CardWar_centurion("centurion", 1, 0, "card-war-centurion.png"),  //
+    CardWar_archer("archer", 1, 2, "card-war-archer-2corns.png"), //
 
     // Polics Cards
-    CardPolitic_emperor("politic:emperor", 3, false, "card-politic-emperor-3laurel.png"), //
-    CardPolitic_cat("politic:cat", 2, true, "card-politic-women-2laurel-cat.png") //
+    CardPolitic_emperor("emperor", 3, false, "card-politic-emperor-3laurel.png"), //
+    //CardPolitic_cat("cat", 2, true, "card-politic-women-2laurel-cat.png") //
     ;
 
     // ------------------------------------------------------------------------
@@ -73,6 +73,9 @@ public enum CardType {
         this.laurelCount = laurelCount;
         this.cat = cat;
         this.imageResource = "images/cards/" + imageResource;
+    }
+    public String getCardName(){
+        return cardDisplayName;
     }
 
     // for Material card
