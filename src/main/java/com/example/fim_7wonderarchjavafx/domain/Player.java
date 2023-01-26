@@ -47,6 +47,8 @@ public class Player {
     }
 
 
+
+    // Méthode qui va vérifier si toutes les pièces d'un étage sont construite si toutes les pièces sont retourné alors on passe à un autre niveau
     public boolean levelIsBuilt(){
         for (Piece piece : wonder.getPieceList()){
             if(wonder.getLevel() == piece.getLevel()){
@@ -71,12 +73,19 @@ public class Player {
     }
 
 
-    // Fonction qui permettra de verifier si on a le jeton ou pas
-
+    // Fonction qui permet de verifier si on a le jeton ou pas
     public boolean gotToken(String nameToken) {
-        if (playerToken.get(nameToken) >= 1) {
-            playerToken.replace(nameToken,0);
-            return true;
+        if (nameToken == "Culture"){
+            if (playerToken.get(nameToken) >= 1 && playerToken.get(nameToken) <=2) {
+                playerToken.replace(nameToken,0);
+                return true;
+            }
+        }
+        else {
+            if (playerToken.get(nameToken) == 1) {
+                playerToken.replace(nameToken,0);
+                return true;
+            }
         }
         return false;
     }
@@ -164,6 +173,12 @@ public class Player {
     public void setTurn(int tour){
         nbTurn = tour;
     }
+    public void setControlCat(boolean bool){
+        controlCat = bool;
+    }
+
+    public void setMilitaryPoint(int point){militaryPoint = point;}
+    public void setPartyPoint(int point){partyPoint = point;}
 
 
     //Getters
