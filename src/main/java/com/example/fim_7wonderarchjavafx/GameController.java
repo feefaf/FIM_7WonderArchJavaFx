@@ -176,7 +176,6 @@ public class GameController implements Initializable {
         String wonderName = player.getWonder().getName();
         switch (wonderName){
             case "alexandrie":
-
         }
 
 

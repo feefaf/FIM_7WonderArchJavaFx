@@ -2,8 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/fim_7wonderarchjavafx/domain/ProgressToken.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/fim_7wonderarchjavafx/domain/WonderEnum.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/fim_7wonderarchjavafx/domain/ProgressToken.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/fim_7wonderarchjavafx/domain/WonderEnum.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>

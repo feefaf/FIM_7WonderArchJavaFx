@@ -59,30 +59,7 @@ public class Player {
         return true;
     }
 
-    // Vérifie si les ressources courantes peuvent payer le cout spécifié
-    /*
-    public boolean canAfford(HashMap<String, Integer> cout) {
-        for (Map.Entry<String, Integer> entry : cout.entrySet()) {
-            String ressource = entry.getKey();
-            int quantity = entry.getValue();
-            if (!this.ressourceList.containsKey(ressource) || this.ressourceList.get(ressource) < quantity) {
-                return false;
-            }
-        }
-        return true;
-    }
-*/
-/*
-    public void payCost(HashMap<String, Integer> cout) {
-        // Déduit le coût spécifié des ressources courantes
-        for (Map.Entry<String, Integer> entry : cout.entrySet()) {
-            String ressource = entry.getKey();
-            int quantity = entry.getValue();
-            int ressourcesActuelles = this.ressourceList.get(ressource);
-            this.ressourceList.put(ressource, ressourcesActuelles - quantity);
-        }
-    }
-*/
+
     public void add_ressources(HashMap<String, Integer> cout) {
         // Ajoute les ressources spécifiées aux ressources courantes
         for (Map.Entry<String, Integer> entry : cout.entrySet()) {
@@ -105,7 +82,7 @@ public class Player {
     }
 
     //Fonction qui va appliquer l'effet des jetons dès que l'on pioche une carte
-    public void directApplyTokenEffect(TokenProgress tokenProgress){
+    public void directApplyTokenEffect(){
                 if(playerToken.get("Economie")>=1) {
                     tokenProgress.economieEffect(this);
                 }
@@ -116,7 +93,7 @@ public class Player {
 
 
     // Methode qui va appliquer les effects des jetons lorsque l'on pioche une carte
-    public void piocheApplyTokenEffect(TokenProgress tokenProgress){
+    public void piocheApplyTokenEffect(){
                 if(playerToken.get("Urbanisme")>=1){
                     tokenProgress.urbanismeEffect(this);
                 }
@@ -135,7 +112,7 @@ public class Player {
             }
 
     // Methode qui va appliquer les effect des jetons lors de la construction d'une wonder
-    public void wonderBuiltApplyTokenEffect(TokenProgress tokenProgress){
+    public void wonderBuiltApplyTokenEffect(){
                 if(playerToken.get("Architecture")>=1) {
                     tokenProgress.architectureEffect(this);
                 }
@@ -149,7 +126,7 @@ public class Player {
 
 
     // Methode qui va appliquer les effect des jetons lors de la fin de la partie
-    public void endApplyTokenEffect(TokenProgress tokenProgress){
+    public void endApplyTokenEffect(){
                 if(playerToken.get("Decoration") >=1) {
                     tokenProgress.decorationEffect(this);
                 }
@@ -209,6 +186,8 @@ public class Player {
     private int age;
     private int nbTurn;
     private Wonder wonder;
+
+    private TokenProgress tokenProgress;
     private int partyPoint;
     private int militaryPoint;
     private boolean controlCat;
