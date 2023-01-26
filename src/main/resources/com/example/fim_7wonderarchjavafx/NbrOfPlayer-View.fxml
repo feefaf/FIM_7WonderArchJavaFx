@@ -21,12 +21,12 @@
                   <Font name="System Bold" size="45.0" />
                </font>
             </Label>
-            <Button layoutX="417.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#on2PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="2" />
-            <Button layoutX="487.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#on3PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="3" />
-            <Button layoutX="557.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#on4PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="4" />
-            <Button layoutX="627.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#on5PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="5" />
-            <Button layoutX="701.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#on6PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="6" />
-            <Button layoutX="775.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#on7PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="7" />
+            <Button layoutX="452.0" layoutY="525.0" mnemonicParsing="false" onMouseClicked="#on2PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="2" />
+            <Button layoutX="548.0" layoutY="527.0" mnemonicParsing="false" onMouseClicked="#on3PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="3" />
+            <Button layoutX="647.0" layoutY="527.0" mnemonicParsing="false" onMouseClicked="#on4PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="4" />
+            <Button layoutX="495.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#on5PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="5" />
+            <Button layoutX="605.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#on6PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="6" />
+            <Button layoutX="548.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#on7PlayerSelected" prefHeight="46.0" prefWidth="50.0" text="7" />
          </children>
       </AnchorPane>
    </children>

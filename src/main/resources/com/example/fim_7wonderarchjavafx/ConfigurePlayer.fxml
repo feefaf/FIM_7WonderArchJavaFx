@@ -5,13 +5,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fim_7wonderarchjavafx.ConfigurePlayerController">
    <children>
+      <ImageView fitHeight="400.0" fitWidth="658.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/BackGround/marbreBackGround.jpg" />
+         </image>
+      </ImageView>
       <ImageView fx:id="wonderImageSlot" fitHeight="364.0" fitWidth="131.0" layoutX="120.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="SelectedName" layoutX="294.0" layoutY="164.0" promptText="Quel est votre nom" />
       <Spinner fx:id="selectedAge" cache="true" editable="true" layoutX="295.0" layoutY="201.0" AnchorPane.bottomAnchor="173.4">

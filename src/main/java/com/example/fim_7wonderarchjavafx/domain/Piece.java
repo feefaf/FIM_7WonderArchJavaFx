@@ -81,6 +81,13 @@ public class Piece {
     public boolean getEffect(){return effect;}
     public int getLevel(){return level;}
 
+    public String getFrontImageUrl(){
+        return frontImageUrl;
+    }
+
+    public String getBackImageUrl(){
+        return backImageUrl;
+    }
     public int getNbrOfMaterials(){return nbrOfMaterials;}
     public boolean getIfSameMaterial() {return sameMaterial;}
 

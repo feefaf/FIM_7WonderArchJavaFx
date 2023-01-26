@@ -6,7 +6,7 @@ import java.util.List;
 public class CardDecks {
 
 	public static class CardTypeQuantity {
-		public final int quantity;
+		public int quantity;
 		public final CardType cardType;
 		public final String url;
 		public CardTypeQuantity(int quantity, CardType cardType, String path) {
@@ -17,6 +17,15 @@ public class CardDecks {
 
 		public String geturl() {return url;}
 		//
+		public void minusCard(){
+			this.quantity -= 1;
+		}
+		public void addCard(){
+			this.quantity += 1;
+		}
+		public CardType getCardType(){
+			return this.cardType;
+		}
 	}
 	
 	/** Card Types x Quantities for Gizeh Deck */
@@ -38,7 +47,7 @@ public class CardDecks {
 			new CardTypeQuantity(0, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(2, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(3, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(3, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 	});
 
 	/** Card Types x Quantities for Rhodes Deck */
@@ -60,7 +69,7 @@ public class CardDecks {
 			new CardTypeQuantity(1, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(2, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 			//
 	});
 
@@ -83,7 +92,7 @@ public class CardDecks {
 			new CardTypeQuantity(1, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(2, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 
 	});
 	
@@ -106,7 +115,7 @@ public class CardDecks {
 			new CardTypeQuantity(1, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(2, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 
 	});
 
@@ -129,7 +138,7 @@ public class CardDecks {
 			new CardTypeQuantity(1, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(2, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 
 	});
 
@@ -152,7 +161,7 @@ public class CardDecks {
 			new CardTypeQuantity(1, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(1, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(2, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 
 	});
 
@@ -175,7 +184,7 @@ public class CardDecks {
 			new CardTypeQuantity(1, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(1, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(3, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(3, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 
 	});
 
@@ -198,7 +207,7 @@ public class CardDecks {
 			new CardTypeQuantity(2, CardType.CardWar_archer,"src/main/resources/images/cards/card-war-archer-2corns.png"), // 0 !
 			// politics
 			new CardTypeQuantity(4, CardType.CardPolitic_emperor,"src/main/resources/images/cards/card-politic-emperor-3laurel.png"), //
-			new CardTypeQuantity(8, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
+			//new CardTypeQuantity(8, CardType.CardPolitic_cat,"src/main/resources/images/cards/card-politic-women-2laurel-cat.png"), //
 
 	});
 

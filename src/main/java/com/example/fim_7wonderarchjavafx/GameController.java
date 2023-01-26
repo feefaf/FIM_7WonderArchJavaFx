@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
 import java.net.URL;
@@ -18,13 +19,25 @@ import static com.example.fim_7wonderarchjavafx.listPlayer.listPlayers;
 
 public class GameController implements Initializable {
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            turn = -1;
             //On commence par trier les joueurs en fonction de leurs Age
             Collections.sort(listPlayers, new AgeComparator());
             //Nombre de joueurs
             nbrOfPlayers = listPlayers.size();
+
+            HashMap<String, String> WonderDeckImageUrl = new HashMap<>();
+
+            WonderDeckImageUrl.put("alexandrie", "src/main/resources/images/decks/deck-alexandrie.png");
+            WonderDeckImageUrl.put("babylon", "src/main/resources/images/decks/deck-babylon.png");
+            WonderDeckImageUrl.put("gizeh", "src/main/resources/images/decks/deck-cizeh.png");
+            WonderDeckImageUrl.put("ephese", "src/main/resources/images/decks/deck-ephese.png");
+            WonderDeckImageUrl.put("halicarnasse", "src/main/resources/images/decks/deck-halicarnasse.png");
+            WonderDeckImageUrl.put("olympie", "src/main/resources/images/decks/deck-olympie.png");
+            WonderDeckImageUrl.put("rhodes", "src/main/resources/images/decks/deck-rhodes.png");
 
             //Creation de la liste de tout les token progress
             progressTokenDeck = new ArrayList<>();
@@ -123,8 +136,11 @@ public class GameController implements Initializable {
             PlayerGameDeckList = new ArrayList<>();
             for (int i = 0; i < 7; i++) {
                 if(i < nbrOfPlayers){
+
+                    PlayerPositionSlotList.get(i).setImage(chargeImage(WonderDeckImageUrl.get(listPlayers.get(i).getWonder().getName())));
+                    //WonderJavaFXDisplayer(listPlayers.get(i), (float) PlayerPositionSlotList.get(i).getX(),(float) PlayerPositionSlotList.get(i).getY()  );
                     //=============================================================================
-                    //ICI JE DOIS UTILISER LA METHODE QUE MATTHIEU VA FAIRE!!!!!!!!!!!!!!!!!!!!!!!!
+                    //FONCTION NON FONCTIONNELLE
                     //=============================================================================
 
                     //PlayerPositionSlotList.get(i)
@@ -142,6 +158,7 @@ public class GameController implements Initializable {
                     PlayerDeckList.get(i).setDisable(true);
 
                 }
+                GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
 
             }
         } catch (Exception e) {
@@ -149,9 +166,10 @@ public class GameController implements Initializable {
         }
     }
 
-    public static void GameProcess(ArrayList<ImageView> PlayerPositionSlotList){
-
-
+    public static void GameProcess(ArrayList<ImageView> PlayerPositionSlotList, Label InfosPrompterLabel,
+                                   Label ActionPrompterLabel){
+        addTurn();
+        ActionPrompterLabel.setText("C'est le tour de "+ listPlayers.get(turn).getName());
     }
 
 
@@ -167,67 +185,345 @@ public class GameController implements Initializable {
 
 
 
-
     //FXML METHODS
+    public void onBoardDeckClicked(MouseEvent event) {
+        int chosenCard;
+        do{
+            chosenCard =(int)(Math.floor(Math.random() * boardDeck.size()));
+        }while(boardDeck.get(chosenCard).quantity < 1);
 
-    public void WonderJavaFXDisplayer(Player player, int x, float y){
-        //Cette fonction permettra d'afficher la merveille en fonction de
-        //sa localisation sur l'ecran, de sa localisation
-        String wonderName = player.getWonder().getName();
-        switch (wonderName){
-            case "alexandrie":
+        boardDeck.get(chosenCard).minusCard();
+        String cardNameSelected = boardDeck.get(chosenCard).getCardType().getCardName();
+        System.out.println(cardNameSelected);
+        if (cardNameSelected == "emperor"){
+            listPlayers.get(turn).gainPartyPoint(3);
         }
 
+        listPlayers.get(turn).add_ressources(cardNameSelected);
 
-
-    }
-    public void onBoardDeckClicked(MouseEvent event) {
-
+        InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + boardDeck.get(chosenCard).getCardType().getCardName());
+        GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
     }
 
 
     public void onGetPlayer1Infos(MouseEvent event) {
+        HashMap<String, Integer> PlayerRessources = listPlayers.get(0).getRessourceList();
+        PlayerInfosPrompter.setText(
+                listPlayers.get(0).getName()+" Ressources :\n"+
+                "brick : "+ PlayerRessources.get("brick")+"\n"+
+                "wood : "+ PlayerRessources.get("wood")+"\n"+
+                "stone : "+ PlayerRessources.get("stone")+"\n"+
+                "paper : "+ PlayerRessources.get("paper")+"\n"+
+                "glass : "+ PlayerRessources.get("glass")+"\n"+
+                "gold : "+ PlayerRessources.get("gold")+"\n"+
+                "law : "+ PlayerRessources.get("law")+"\n"+
+                "mechanic : "+ PlayerRessources.get("mechanic")+"\n"+
+                "architect : "+ PlayerRessources.get("architect")+"\n"+
+                "barbarian : "+ PlayerRessources.get("barbarian")+"\n"+
+                "centurion : "+ PlayerRessources.get("centurion")+"\n"+
+                "archer : "+ PlayerRessources.get("archer")+"\n"+
+                "emperor : "+ PlayerRessources.get("emperor")+"\n"
+        );
     }
     public void onGetPlayer2Infos(MouseEvent event) {
+        HashMap<String, Integer> PlayerRessources = listPlayers.get(1).getRessourceList();
+        PlayerInfosPrompter.setText(
+                listPlayers.get(1).getName()+" Ressources :\n"+
+                        "brick : "+ PlayerRessources.get("brick")+"\n"+
+                        "wood : "+ PlayerRessources.get("wood")+"\n"+
+                        "stone : "+ PlayerRessources.get("stone")+"\n"+
+                        "paper : "+ PlayerRessources.get("paper")+"\n"+
+                        "glass : "+ PlayerRessources.get("glass")+"\n"+
+                        "gold : "+ PlayerRessources.get("gold")+"\n"+
+                        "law : "+ PlayerRessources.get("law")+"\n"+
+                        "mechanic : "+ PlayerRessources.get("mechanic")+"\n"+
+                        "architect : "+ PlayerRessources.get("architect")+"\n"+
+                        "barbarian : "+ PlayerRessources.get("barbarian")+"\n"+
+                        "centurion : "+ PlayerRessources.get("centurion")+"\n"+
+                        "archer : "+ PlayerRessources.get("archer")+"\n"+
+                        "emperor : "+ PlayerRessources.get("emperor")+"\n"
+        );
     }
     public void onGetPlayer3Infos(MouseEvent event) {
+        HashMap<String, Integer> PlayerRessources = listPlayers.get(2).getRessourceList();
+        PlayerInfosPrompter.setText(
+                listPlayers.get(2).getName()+" Ressources :\n"+
+                        "brick : "+ PlayerRessources.get("brick")+"\n"+
+                        "wood : "+ PlayerRessources.get("wood")+"\n"+
+                        "stone : "+ PlayerRessources.get("stone")+"\n"+
+                        "paper : "+ PlayerRessources.get("paper")+"\n"+
+                        "glass : "+ PlayerRessources.get("glass")+"\n"+
+                        "gold : "+ PlayerRessources.get("gold")+"\n"+
+                        "law : "+ PlayerRessources.get("law")+"\n"+
+                        "mechanic : "+ PlayerRessources.get("mechanic")+"\n"+
+                        "architect : "+ PlayerRessources.get("architect")+"\n"+
+                        "barbarian : "+ PlayerRessources.get("barbarian")+"\n"+
+                        "centurion : "+ PlayerRessources.get("centurion")+"\n"+
+                        "archer : "+ PlayerRessources.get("archer")+"\n"+
+                        "emperor : "+ PlayerRessources.get("emperor")+"\n"
+        );
     }
     public void onGetPlayer4Infos(MouseEvent event) {
+        HashMap<String, Integer> PlayerRessources = listPlayers.get(3).getRessourceList();
+        PlayerInfosPrompter.setText(
+                listPlayers.get(3).getName()+" Ressources :\n"+
+                        "brick : "+ PlayerRessources.get("brick")+"\n"+
+                        "wood : "+ PlayerRessources.get("wood")+"\n"+
+                        "stone : "+ PlayerRessources.get("stone")+"\n"+
+                        "paper : "+ PlayerRessources.get("paper")+"\n"+
+                        "glass : "+ PlayerRessources.get("glass")+"\n"+
+                        "gold : "+ PlayerRessources.get("gold")+"\n"+
+                        "law : "+ PlayerRessources.get("law")+"\n"+
+                        "mechanic : "+ PlayerRessources.get("mechanic")+"\n"+
+                        "architect : "+ PlayerRessources.get("architect")+"\n"+
+                        "barbarian : "+ PlayerRessources.get("barbarian")+"\n"+
+                        "centurion : "+ PlayerRessources.get("centurion")+"\n"+
+                        "archer : "+ PlayerRessources.get("archer")+"\n"+
+                        "emperor : "+ PlayerRessources.get("emperor")+"\n"
+        );
+
     }
 
     public void onGetPlayer5Infos(MouseEvent event) {
+        HashMap<String, Integer> PlayerRessources = listPlayers.get(4).getRessourceList();
+        PlayerInfosPrompter.setText(
+                listPlayers.get(4).getName()+" Ressources :\n"+
+                        "brick : "+ PlayerRessources.get("brick")+"\n"+
+                        "wood : "+ PlayerRessources.get("wood")+"\n"+
+                        "stone : "+ PlayerRessources.get("stone")+"\n"+
+                        "paper : "+ PlayerRessources.get("paper")+"\n"+
+                        "glass : "+ PlayerRessources.get("glass")+"\n"+
+                        "gold : "+ PlayerRessources.get("gold")+"\n"+
+                        "law : "+ PlayerRessources.get("law")+"\n"+
+                        "mechanic : "+ PlayerRessources.get("mechanic")+"\n"+
+                        "architect : "+ PlayerRessources.get("architect")+"\n"+
+                        "barbarian : "+ PlayerRessources.get("barbarian")+"\n"+
+                        "centurion : "+ PlayerRessources.get("centurion")+"\n"+
+                        "archer : "+ PlayerRessources.get("archer")+"\n"+
+                        "emperor : "+ PlayerRessources.get("emperor")+"\n"
+        );
     }
     public void onGetPlayer6Infos(MouseEvent event) {
+        HashMap<String, Integer> PlayerRessources = listPlayers.get(5).getRessourceList();
+        PlayerInfosPrompter.setText(
+                listPlayers.get(5).getName()+" Ressources :\n"+
+                        "brick : "+ PlayerRessources.get("brick")+"\n"+
+                        "wood : "+ PlayerRessources.get("wood")+"\n"+
+                        "stone : "+ PlayerRessources.get("stone")+"\n"+
+                        "paper : "+ PlayerRessources.get("paper")+"\n"+
+                        "glass : "+ PlayerRessources.get("glass")+"\n"+
+                        "gold : "+ PlayerRessources.get("gold")+"\n"+
+                        "law : "+ PlayerRessources.get("law")+"\n"+
+                        "mechanic : "+ PlayerRessources.get("mechanic")+"\n"+
+                        "architect : "+ PlayerRessources.get("architect")+"\n"+
+                        "barbarian : "+ PlayerRessources.get("barbarian")+"\n"+
+                        "centurion : "+ PlayerRessources.get("centurion")+"\n"+
+                        "archer : "+ PlayerRessources.get("archer")+"\n"+
+                        "emperor : "+ PlayerRessources.get("emperor")+"\n"
+        );
     }
 
     public void onGetPlayer7Infos(MouseEvent event) {
+        HashMap<String, Integer> PlayerRessources = listPlayers.get(6).getRessourceList();
+        PlayerInfosPrompter.setText(
+                listPlayers.get(6).getName()+" Ressources :\n"+
+                        "brick : "+ PlayerRessources.get("brick")+"\n"+
+                        "wood : "+ PlayerRessources.get("wood")+"\n"+
+                        "stone : "+ PlayerRessources.get("stone")+"\n"+
+                        "paper : "+ PlayerRessources.get("paper")+"\n"+
+                        "glass : "+ PlayerRessources.get("glass")+"\n"+
+                        "gold : "+ PlayerRessources.get("gold")+"\n"+
+                        "law : "+ PlayerRessources.get("law")+"\n"+
+                        "mechanic : "+ PlayerRessources.get("mechanic")+"\n"+
+                        "architect : "+ PlayerRessources.get("architect")+"\n"+
+                        "barbarian : "+ PlayerRessources.get("barbarian")+"\n"+
+                        "centurion : "+ PlayerRessources.get("centurion")+"\n"+
+                        "archer : "+ PlayerRessources.get("archer")+"\n"+
+                        "emperor : "+ PlayerRessources.get("emperor")+"\n"
+        );
     }
 
 
     public void onPlayer1DeckClicked(MouseEvent event) {
+        int playerIndex = 0;
+        if(turn ==((playerIndex==0)? listPlayers.size()-1 : playerIndex-1)
+        || turn == playerIndex
+        || turn ==((playerIndex == listPlayers.size()-1)?0:playerIndex+1)){
+            int chosenCard;
+            do{
+                chosenCard =(int)(Math.floor(Math.random() * PlayerGameDeckList.get(playerIndex).size()));
+            }while(PlayerGameDeckList.get(playerIndex).get(chosenCard).quantity < 1);
+
+            PlayerGameDeckList.get(playerIndex).get(chosenCard).minusCard();
+            String cardNameSelected = PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName();
+            System.out.println(cardNameSelected);
+            if (cardNameSelected == "emperor"){
+                listPlayers.get(turn).gainPartyPoint(3);
+            }
+
+            listPlayers.get(turn).add_ressources(cardNameSelected);
+
+            InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
+            GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
+
+        }
     }
 
     public void onPlayer2DeckClicked(MouseEvent event) {
+        int playerIndex = 1;
+        if(turn ==((playerIndex==0)? listPlayers.size()-1 : playerIndex-1)
+                || turn == playerIndex
+                || turn ==((playerIndex == listPlayers.size()-1)?0:playerIndex+1)){
+            int chosenCard;
+            do{
+                chosenCard =(int)(Math.floor(Math.random() * PlayerGameDeckList.get(playerIndex).size()));
+            }while(PlayerGameDeckList.get(playerIndex).get(chosenCard).quantity < 1);
+
+            PlayerGameDeckList.get(playerIndex).get(chosenCard).minusCard();
+            String cardNameSelected = PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName();
+            System.out.println(cardNameSelected);
+            if (cardNameSelected == "emperor"){
+                listPlayers.get(turn).gainPartyPoint(3);
+            }
+
+            listPlayers.get(turn).add_ressources(cardNameSelected);
+
+            InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
+            GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
+
+        }
+
     }
 
     public void onPlayer3DeckClicked(MouseEvent event) {
+        int playerIndex = 2;
+        if(turn ==((playerIndex==0)? listPlayers.size()-1 : playerIndex-1)
+                || turn == playerIndex
+                || turn ==((playerIndex == listPlayers.size()-1)?0:playerIndex+1)){
+            int chosenCard;
+            do{
+                chosenCard =(int)(Math.floor(Math.random() * PlayerGameDeckList.get(playerIndex).size()));
+            }while(PlayerGameDeckList.get(playerIndex).get(chosenCard).quantity < 1);
+
+            PlayerGameDeckList.get(playerIndex).get(chosenCard).minusCard();
+            String cardNameSelected = PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName();
+            System.out.println(cardNameSelected);
+            if (cardNameSelected == "emperor"){
+                listPlayers.get(turn).gainPartyPoint(3);
+            }
+
+            listPlayers.get(turn).add_ressources(cardNameSelected);
+
+            InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
+            GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
+
+        }
     }
 
     public void onPlayer4DeckClicked(MouseEvent event) {
+        int playerIndex = 3;
+        if(turn ==((playerIndex==0)? listPlayers.size()-1 : playerIndex-1)
+                || turn == playerIndex
+                || turn ==((playerIndex == listPlayers.size()-1)?0:playerIndex+1)){
+            int chosenCard;
+            do{
+                chosenCard =(int)(Math.floor(Math.random() * PlayerGameDeckList.get(playerIndex).size()));
+            }while(PlayerGameDeckList.get(playerIndex).get(chosenCard).quantity < 1);
+
+            PlayerGameDeckList.get(playerIndex).get(chosenCard).minusCard();
+            String cardNameSelected = PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName();
+            System.out.println(cardNameSelected);
+            if (cardNameSelected == "emperor"){
+                listPlayers.get(turn).gainPartyPoint(3);
+            }
+
+            listPlayers.get(turn).add_ressources(cardNameSelected);
+
+            InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
+            GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
+
+        }
     }
 
     public void onPlayer5DeckClicked(MouseEvent event) {
+        int playerIndex = 4;
+        if(turn ==((playerIndex==0)? listPlayers.size()-1 : playerIndex-1)
+                || turn == playerIndex
+                || turn ==((playerIndex == listPlayers.size()-1)?0:playerIndex+1)){
+            int chosenCard;
+            do{
+                chosenCard =(int)(Math.floor(Math.random() * PlayerGameDeckList.get(playerIndex).size()));
+            }while(PlayerGameDeckList.get(playerIndex).get(chosenCard).quantity < 1);
+
+            PlayerGameDeckList.get(playerIndex).get(chosenCard).minusCard();
+            String cardNameSelected = PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName();
+            System.out.println(cardNameSelected);
+            if (cardNameSelected == "emperor"){
+                listPlayers.get(turn).gainPartyPoint(3);
+            }
+
+            listPlayers.get(turn).add_ressources(cardNameSelected);
+
+            InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
+            GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
+
+        }
     }
 
     public void onPlayer6DeckClicked(MouseEvent event) {
+        int playerIndex = 5;
+        if(turn ==((playerIndex==0)? listPlayers.size()-1 : playerIndex-1)
+                || turn == playerIndex
+                || turn ==((playerIndex == listPlayers.size()-1)?0:playerIndex+1)){
+            int chosenCard;
+            do{
+                chosenCard =(int)(Math.floor(Math.random() * PlayerGameDeckList.get(playerIndex).size()));
+            }while(PlayerGameDeckList.get(playerIndex).get(chosenCard).quantity < 1);
+
+            PlayerGameDeckList.get(playerIndex).get(chosenCard).minusCard();
+            String cardNameSelected = PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName();
+            System.out.println(cardNameSelected);
+            if (cardNameSelected == "emperor"){
+                listPlayers.get(turn).gainPartyPoint(3);
+            }
+
+            listPlayers.get(turn).add_ressources(cardNameSelected);
+
+            InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
+            GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
+
+        }
     }
 
     public void onPlayer7DeckClicked(MouseEvent event) {
+        int playerIndex = 6;
+        if(turn ==((playerIndex==0)? listPlayers.size()-1 : playerIndex-1)
+                || turn == playerIndex
+                || turn ==((playerIndex == listPlayers.size()-1)?0:playerIndex+1)){
+            int chosenCard;
+            do{
+                chosenCard =(int)(Math.floor(Math.random() * PlayerGameDeckList.get(playerIndex).size()));
+            }while(PlayerGameDeckList.get(playerIndex).get(chosenCard).quantity < 1);
+
+            PlayerGameDeckList.get(playerIndex).get(chosenCard).minusCard();
+            String cardNameSelected = PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName();
+            System.out.println(cardNameSelected);
+            if (cardNameSelected == "emperor"){
+                listPlayers.get(turn).gainPartyPoint(3);
+            }
+
+            listPlayers.get(turn).add_ressources(cardNameSelected);
+
+            InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
+            GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
+
+        }
     }
 
 
 
     public void onHiddenProgressTokenDeckClicked(MouseEvent event) {
+
     }
 
     public void onProgressTokenSlot1Clicked(MouseEvent event) {
@@ -242,6 +538,90 @@ public class GameController implements Initializable {
 
     //Game Attributes
 
+    public void WonderJavaFXDisplayer(Player player, float x, float y) throws Exception {
+        //Cette fonction permettra d'afficher la merveille en fonction de
+        //sa localisation sur l'ecran, de sa localisation
+        String wonderName = player.getWonder().getName();
+        switch (wonderName) {
+            case "alexandrie":
+                System.out.println(x);
+                System.out.println(y);
+
+                ImageView alexandrie01 = new ImageView();
+                alexandrie01.setImage(chargeImage( (player.getWonder().getPieceList().get(0).getStatus())?
+                        player.getWonder().getPieceList().get(0).getFrontImageUrl():
+                        player.getWonder().getPieceList().get(0).getBackImageUrl()));
+                alexandrie01.setX(x);
+                alexandrie01.setY(y-10);
+                alexandrie01.setFitWidth((50));
+                alexandrie01.setFitHeight(73);
+                sceneBoard.getChildren().add(alexandrie01);
+
+                ImageView alexandrie02= new ImageView();
+                alexandrie02.setImage(chargeImage( (player.getWonder().getPieceList().get(1).getStatus())?
+                        player.getWonder().getPieceList().get(1).getFrontImageUrl():
+                        player.getWonder().getPieceList().get(1).getBackImageUrl()));
+                alexandrie02.setX(x);
+                alexandrie02.setY(y-5);
+                alexandrie02.setFitWidth((50));
+                alexandrie02.setFitHeight(73);
+                sceneBoard.getChildren().add(alexandrie02);
+
+                ImageView alexandrie03= new ImageView();
+                alexandrie03.setImage(chargeImage( (player.getWonder().getPieceList().get(2).getStatus())?
+                        player.getWonder().getPieceList().get(2).getFrontImageUrl():
+                        player.getWonder().getPieceList().get(2).getBackImageUrl()));
+                alexandrie03.setX(x);
+                alexandrie03.setY(y);
+                alexandrie03.setFitWidth((50));
+                alexandrie03.setFitHeight(73);
+                sceneBoard.getChildren().add(alexandrie03);
+
+                ImageView alexandrie04= new ImageView();
+                alexandrie04.setImage(chargeImage( (player.getWonder().getPieceList().get(3).getStatus())?
+                        player.getWonder().getPieceList().get(3).getFrontImageUrl():
+                        player.getWonder().getPieceList().get(3).getBackImageUrl()));
+                alexandrie04.setX(x);
+                alexandrie04.setY(y+5);
+                alexandrie04.setFitWidth((50));
+                alexandrie04.setFitHeight(73);
+                sceneBoard.getChildren().add(alexandrie04);
+
+                ImageView alexandrie05= new ImageView();
+                alexandrie04.setImage(chargeImage( (player.getWonder().getPieceList().get(4).getStatus())?
+                        player.getWonder().getPieceList().get(4).getFrontImageUrl():
+                        player.getWonder().getPieceList().get(4).getBackImageUrl()));
+                alexandrie05.setX(x);
+                alexandrie05.setY(y+10);
+                alexandrie05.setFitWidth((50));
+                alexandrie05.setFitHeight(73);
+                sceneBoard.getChildren().add(alexandrie05);
+
+
+                break;
+            case "gizeh":
+
+            default:
+
+
+        }
+    }
+
+    public static void sameTurn(){
+        turn -=1;
+    }
+    public static void addTurn(){
+        turn += (turn == listPlayers.size()-1)?(-turn):1;
+    }
+
+
+    private ArrayList<ImageView> alexandrieImagePieces = new ArrayList<ImageView>();
+    private ArrayList<ImageView> babylonImagePieces = new ArrayList<ImageView>();
+    private ArrayList<ImageView> epheseImagePieces = new ArrayList<ImageView>();
+    private ArrayList<ImageView> gizehImagePieces = new ArrayList<ImageView>();
+    private ArrayList<ImageView> halicarnasseImagePieces = new ArrayList<ImageView>();
+    private ArrayList<ImageView> olympieImagePieces = new ArrayList<ImageView>();
+    private ArrayList<ImageView> rhodesImagePieces = new ArrayList<ImageView>();
     private int nbrOfPlayers;
     private ArrayList<TokenProgress> progressTokenDeck;
     private List<CardDecks.CardTypeQuantity> boardDeck;
@@ -256,7 +636,11 @@ public class GameController implements Initializable {
     private List<CardDecks.CardTypeQuantity> PlayerGameDeck7;
 
     private ArrayList<List<CardTypeQuantity>> PlayerGameDeckList;
+
+    private static int turn;
+
     //FXML ATTRIBUTES
+    public AnchorPane sceneBoard;
     public ImageView boardDeckImage;
     public ImageView PeaceToken1;
     public ImageView PeaceToken2;
