@@ -9,12 +9,17 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fim_7wonderarchjavafx.ChoosePlayerWonderController">
    <children>
+      <ImageView fitHeight="778.0" fitWidth="1379.0" layoutX="-127.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/BackGround/zeus-temple.jpg" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="412.0" fitWidth="144.0" layoutX="37.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/decks/deck-alexandrie.png" />
          </image></ImageView>
       <Button fx:id="alexandrieButton" layoutX="23.0" layoutY="607.0" mnemonicParsing="false" onMouseClicked="#onAlexandrieClick" prefHeight="54.0" prefWidth="144.0" text="Alexandrie" />
-      <Label fx:id="OrderLabel" alignment="CENTER" layoutX="206.0" layoutY="39.0" prefHeight="62.0" prefWidth="811.0" text="Choisissez votre Wonder !" textFill="#963f3f">
+      <Label fx:id="OrderLabel" alignment="CENTER" layoutX="206.0" layoutY="39.0" prefHeight="62.0" prefWidth="811.0" text="Choisissez votre Wonder !" textFill="WHITE">
          <font>
             <Font name="High Tower Text" size="59.0" />
          </font>
