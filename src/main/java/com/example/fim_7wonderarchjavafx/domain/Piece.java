@@ -42,7 +42,7 @@ public class Piece {
 
                     break;
                 case "Rhodes":
-
+                    player.gainShieldNb(1);
                     break;
                 case "Halicarnasse":
 
@@ -50,9 +50,7 @@ public class Piece {
                 case "Olympie":
 
                     break;
-                case "Gizeh":
 
-                    break;
             }
         }
 
