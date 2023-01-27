@@ -120,8 +120,8 @@ class PlayerTest {
 
     }
 
-
-
+//----------------
+//Test pour la fonction gotToken
 
     @Test
     void dontGotTokenTest() {
@@ -145,8 +145,8 @@ class PlayerTest {
         player.getPlayerToken().replace("Propagande",1);
 
         //On verifie que l'on a le jeton propagande
-        assertEquals(true, player.gotToken("Propagande"));
         assertTrue(player.getPlayerToken().get("Propagande")==1);
+        assertEquals(true, player.gotToken("Propagande"));
     }
 
     @Test
@@ -174,8 +174,8 @@ class PlayerTest {
         player.getPlayerToken().replace("Culture",2);
 
         //On verifie que true est retourné
-        assertEquals(true, player.gotToken("Culture"));
         assertTrue(player.getPlayerToken().get("Culture")>=1 && player.getPlayerToken().get("Culture")<= 2);
+        assertEquals(true, player.gotToken("Culture"));
     }
 
     @Test

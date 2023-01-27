@@ -189,7 +189,7 @@ public class Player {
     //Gain
     public void gainPartyPoint(int points){partyPoint+=points;}
     public void gainMilitaryPoint(int points){ militaryPoint+=points;}
-    public void gainShieldNb(int points){militaryPoint+=points;}
+    public void gainShieldNb(int pointsShield){shieldNb+=pointsShield;}
 
 
 

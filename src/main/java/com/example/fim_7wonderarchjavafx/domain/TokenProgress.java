@@ -30,7 +30,7 @@ public class TokenProgress {
         if (player.getPlayerToken().get("Culture") == 1){
             player.gainPartyPoint(4);
         } else if (player.getPlayerToken().get("Culture") == 2) {
-            player.gainPartyPoint(2);
+            player.gainPartyPoint(12);
         }
         else {
             System.out.println("Vous ne possédez pas le jeton culture !");
@@ -51,7 +51,7 @@ public class TokenProgress {
 
     public void economieEffect(Player player){
             int newGoldRessource = player.getRessourceList().get("gold");
-            if (newGoldRessource>1){
+            if (newGoldRessource>=1){
                 newGoldRessource+=1;
             }
         player.getRessourceList().replace("gold", newGoldRessource);
@@ -79,11 +79,14 @@ public class TokenProgress {
     }
 
     public void educationEffect(Player player){
-        //
-        int cpt = 0;
+        //Commence à 2 car le jeton éducation est inclus
+        int cpt = 2;
+
+        //Boucle qui parcours le dictionnaire et qui vérifie si la valeur associé à la clé qui est le nom du jeton est sup à 1 afin
+        //d'incrémenter le compteurs de 2 à chaque fois que la condition est vérifié
         for (Map.Entry<String,Integer> valueToken : player.getPlayerToken().entrySet()){
-            int value = valueToken.getValue();
-            if (value>=1){
+            String tokenName = valueToken.getKey();
+            if (player.getPlayerToken().get(tokenName)>=1){
                 cpt+=2;
             }
         }
