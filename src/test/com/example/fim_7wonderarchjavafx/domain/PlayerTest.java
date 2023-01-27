@@ -50,6 +50,19 @@ class PlayerTest {
         assertEquals(0, player.getAllPoints());
     }
 
+    @Test
+    public void testGetAllPointsWithNegValues() {
+        Wonder wonder = new Wonder("Alexandrie",new ArrayList<Piece>());
+        Player player = new Player("Mael",18,wonder);
+
+        player.gainMilitaryPoint(-5);
+        player.gainPartyPoint(-2);
+        player.setControlCat(false);
+
+
+        assertFalse(player.getAllPoints() != 0);
+    }
+
     //------------------------------------------------------------------------------------
     //Test pour le fonction levelIsBuilt
         @Test
@@ -120,23 +133,38 @@ class PlayerTest {
 
     }
 
+    @Test
+    public void testLevelIsBuiltTrueTwoPieceNeg() {
+        // Initializing player, wonder, and pieces
+        Wonder wonder = new Wonder("Alexandrie",new ArrayList<Piece>());
+        Player player = new Player("player1",18,wonder);
+        Piece piece1 = new Piece("piece1", "Alexandrie", 0, 0, -1, false, "", "", 0, false);
+        Piece piece2 = new Piece("piece2", "Alexandrie", 0, 0, 1, false, "", "", 0, false);
+        Piece piece3 = new Piece("piece3", "Alexandrie", 0, 0, 1, false, "", "", 0, false);
+
+        //On change l'état de la pièce 1 et 2 à true pour dire qu'elles sont construite sauf pour la pièce 3
+        piece1.constructPiece();
+        piece3.constructPiece();
+
+        //On ajoute les pieces dans la liste de pièce de la wonder
+        wonder.getPieceList().add(piece1);
+        wonder.getPieceList().add(piece2);
+        wonder.getPieceList().add(piece3);
+
+        //On vérifie que la fonction nous retourne bien false car toutes les pièces ne sont pas construite et que la pièce 1 a un étage négatif
+        assertEquals(false,player.levelIsBuilt());
+
+        //On vérifie que l'on est résté à l'étage 1 de la wonder
+        assertTrue(wonder.getLevel()==1);
+        assertFalse(wonder.getLevel()==2);
+
+    }
+
 //----------------
 //Test pour la fonction gotToken
 
     @Test
-    void dontGotTokenTest() {
-        //On initialise les variables Wonder et Player
-        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
-        Player player = new Player("Arnaud",20,wonder);
-
-        //On verifie que l'on a pas le jeton propagande
-        assertEquals(false, player.gotToken("Propagande"));
-        assertFalse(player.getPlayerToken().get("Propagande")==1);
-
-    }
-
-    @Test
-    void haveGotTokenTest() {
+    void haveTokenTest() {
         //On initialise les variables Wonder et Player
         Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
         Player player = new Player("Arnaud",20,wonder);
@@ -148,9 +176,22 @@ class PlayerTest {
         assertTrue(player.getPlayerToken().get("Propagande")==1);
         assertEquals(true, player.gotToken("Propagande"));
     }
+    @Test
+    void dontHaveTokenTest() {
+        //On initialise les variables Wonder et Player
+        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
+        Player player = new Player("Arnaud",20,wonder);
+
+        //On verifie que l'on a pas le jeton propagande
+        assertEquals(false, player.gotToken("Propagande"));
+        assertFalse(player.getPlayerToken().get("Propagande")==1);
+
+    }
+
+
 
     @Test
-    void dontGotTokenTest2() {
+    void dontHaveTokenTest2() {
         //On initialise les variables Wonder et Player
         Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
         Player player = new Player("Arnaud",20,wonder);
@@ -161,6 +202,36 @@ class PlayerTest {
         //On verifie que false est retourné
         assertEquals(false, player.gotToken("Propagande"));
         assertFalse(player.getPlayerToken().get("Propagande")==1);
+
+    }
+
+    @Test
+    void dontHaveTokenTest3() {
+        //On initialise les variables Wonder et Player
+        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
+        Player player = new Player("Arnaud",20,wonder);
+
+        //On obtient le jeton propagande -1 fois (ce qui n'est pas possible donc cela devrait nous renvoyez false)
+        player.getPlayerToken().replace("Propagande",-1);
+
+        //On verifie que false est retourné
+        assertEquals(false, player.gotToken("Propagande"));
+        assertFalse(player.getPlayerToken().get("Propagande")==1);
+
+    }
+
+    @Test
+    void dontHaveTokenTest4() {
+        //On initialise les variables Wonder et Player
+        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
+        Player player = new Player("Arnaud",20,wonder);
+
+        //On obtient le jeton propagande -1 fois (ce qui n'est pas possible donc cela devrait nous renvoyez false)
+        player.getPlayerToken().replace("Propagende",1);
+
+        //On verifie que false est retourné car on s'est trompé en renseignant la clé
+        assertEquals(false, player.gotToken("Propagande"));
+        assertTrue(player.getPlayerToken().get("Propagande")==0);
 
     }
 
@@ -201,6 +272,65 @@ class PlayerTest {
         //On verifie que false est retourné
         assertEquals(false, player.gotToken("Culture"));
         assertFalse(player.getPlayerToken().get("Culture")>=1 && player.getPlayerToken().get("Culture")<= 2);
+    }
+
+    @Test
+    void dontGotCultureTokenTest3() {
+        //On initialise les variables Wonder et Player
+        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
+        Player player = new Player("Arnaud",20,wonder);
+
+        //On a -1 jetons culture
+        player.getPlayerToken().replace("Culture",-1);
+
+        //On verifie que false est retourné
+        assertEquals(false, player.gotToken("Culture"));
+        assertFalse(player.getPlayerToken().get("Culture")>=1 && player.getPlayerToken().get("Culture")<= 2);
+    }
+
+    @Test
+    void dontGotCultureTokenTest4() {
+        //On initialise les variables Wonder et Player
+        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
+        Player player = new Player("Arnaud",20,wonder);
+
+        //On a -1 jetons culture
+        player.getPlayerToken().replace("Culltur",1);
+
+        //On verifie que false est retourné car on s'est trompé dans l'écriture de Culture
+        assertEquals(false, player.gotToken("Culture"));
+        assertFalse(player.getPlayerToken().get("Culture")>=1 && player.getPlayerToken().get("Culture")<= 2);
+    }
+
+
+
+    //----------------
+//Test pour la fonction addRessources
+
+    @Test
+    void verifyValueAddRessource(){
+        //On initialise les variables Wonder et Player
+        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
+        Player player = new Player("Arnaud",20,wonder);
+
+        //On ajoute la ressources gold
+        player.addRessources("gold");
+
+        //On verifie qu'on a bien 1 pièce d'or
+        assertTrue(player.getRessourceList().get("gold")==1);
+    }
+
+    @Test
+    void verifyValueAddRessource2(){
+        //On initialise les variables Wonder et Player
+        Wonder wonder = new Wonder("Alexandrie", new ArrayList<Piece>());
+        Player player = new Player("Arnaud",20,wonder);
+
+        //On ajoute la ressources gold
+        player.addRessources("gauld");
+
+        //On verifie qu'on a bien 0 pièce d'or car on a fait une faute d'orthographe
+        assertTrue(player.getRessourceList().get("gold")==0);
     }
 
 

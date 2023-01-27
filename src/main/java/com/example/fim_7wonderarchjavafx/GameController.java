@@ -199,7 +199,7 @@ public class GameController implements Initializable {
             listPlayers.get(turn).gainPartyPoint(3);
         }
 
-        listPlayers.get(turn).add_ressources(cardNameSelected);
+        listPlayers.get(turn).addRessources(cardNameSelected);
 
         InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + boardDeck.get(chosenCard).getCardType().getCardName());
         GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
@@ -361,7 +361,7 @@ public class GameController implements Initializable {
                 listPlayers.get(turn).gainPartyPoint(3);
             }
 
-            listPlayers.get(turn).add_ressources(cardNameSelected);
+            listPlayers.get(turn).addRessources(cardNameSelected);
 
             InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
             GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
@@ -386,7 +386,7 @@ public class GameController implements Initializable {
                 listPlayers.get(turn).gainPartyPoint(3);
             }
 
-            listPlayers.get(turn).add_ressources(cardNameSelected);
+            listPlayers.get(turn).addRessources(cardNameSelected);
 
             InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
             GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
@@ -412,7 +412,7 @@ public class GameController implements Initializable {
                 listPlayers.get(turn).gainPartyPoint(3);
             }
 
-            listPlayers.get(turn).add_ressources(cardNameSelected);
+            listPlayers.get(turn).addRessources(cardNameSelected);
 
             InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
             GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
@@ -437,7 +437,7 @@ public class GameController implements Initializable {
                 listPlayers.get(turn).gainPartyPoint(3);
             }
 
-            listPlayers.get(turn).add_ressources(cardNameSelected);
+            listPlayers.get(turn).addRessources(cardNameSelected);
 
             InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
             GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
@@ -462,7 +462,7 @@ public class GameController implements Initializable {
                 listPlayers.get(turn).gainPartyPoint(3);
             }
 
-            listPlayers.get(turn).add_ressources(cardNameSelected);
+            listPlayers.get(turn).addRessources(cardNameSelected);
 
             InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
             GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
@@ -487,7 +487,7 @@ public class GameController implements Initializable {
                 listPlayers.get(turn).gainPartyPoint(3);
             }
 
-            listPlayers.get(turn).add_ressources(cardNameSelected);
+            listPlayers.get(turn).addRessources(cardNameSelected);
 
             InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
             GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);
@@ -512,7 +512,7 @@ public class GameController implements Initializable {
                 listPlayers.get(turn).gainPartyPoint(3);
             }
 
-            listPlayers.get(turn).add_ressources(cardNameSelected);
+            listPlayers.get(turn).addRessources(cardNameSelected);
 
             InfosPrompterLabel.setText(listPlayers.get(turn).getName()+" a pioché une carte " + PlayerGameDeckList.get(playerIndex).get(chosenCard).getCardType().getCardName());
             GameProcess(PlayerPositionSlotList, InfosPrompterLabel, ActionPrompterLabel);

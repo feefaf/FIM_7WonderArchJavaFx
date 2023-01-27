@@ -61,7 +61,11 @@ public class Player {
     // Méthode qui va vérifier si toutes les pièces d'un étage sont construite si toutes les pièces sont retourné alors on passe à un autre niveau
     public boolean levelIsBuilt(){
         for (Piece piece : wonder.getPieceList()){
-            if(wonder.getLevel() == piece.getLevel()){
+            if (piece.getLevel()<0) {
+                System.out.println("Vous avez renseigné un étage négatif");
+                return false;
+            }
+            else if(wonder.getLevel() == piece.getLevel()){
                 if (piece.getStatus()==false){
                     return false;
                 }
@@ -70,6 +74,16 @@ public class Player {
         wonder.addLevel();
         return true;
     }
+
+    public void addRessources(String key) {
+        if (ressourceList.containsKey(key))
+            // Ajoute les ressources spécifiées aux ressources courantes
+            ressourceList.replace(key, ressourceList.get(key)+1);
+        else{
+            System.out.println("La clé renseigné n'existe pas dans le dictionnaire");
+        }
+    }
+
 
     // Vérifie si les ressources courantes peuvent payer le cout spécifié
     /*
@@ -95,20 +109,17 @@ public class Player {
         }
     }
 */
-    public void add_ressources(String key) {
-        // Ajoute les ressources spécifiées aux ressources courantes
-        ressourceList.put(key, ressourceList.get(key)+1);
-    }
-
 
     // Fonction qui permet de verifier si on a le jeton ou pas
     public boolean gotToken(String nameToken) {
-        if (nameToken == "Culture"){
-            if (playerToken.get(nameToken) >= 1 && playerToken.get(nameToken) <=2) {
-                playerToken.replace(nameToken,0);
-                return true;
+        if (playerToken.containsKey(nameToken)) {
+
+            if (nameToken == "Culture") {
+                if (playerToken.get(nameToken) >= 1 && playerToken.get(nameToken) <= 2) {
+                    playerToken.replace(nameToken, 0);
+                    return true;
+                }
             }
-        }
         else {
             if (playerToken.get(nameToken) == 1) {
                 playerToken.replace(nameToken,0);
@@ -117,6 +128,12 @@ public class Player {
         }
         return false;
     }
+    else {
+        System.out.println("La clé n'existe pas");
+        return false;
+        }
+    }
+
 
     //Fonction qui va appliquer l'effet des jetons dès que l'on pioche une carte
     public void directApplyTokenEffect(TokenProgress tokenProgress){
@@ -187,9 +204,18 @@ public class Player {
 
 
     //Gain
-    public void gainPartyPoint(int points){partyPoint+=points;}
-    public void gainMilitaryPoint(int points){ militaryPoint+=points;}
-    public void gainShieldNb(int pointsShield){shieldNb+=pointsShield;}
+    public void gainPartyPoint(int points){
+        if(points   >=0)
+            partyPoint+=points;
+    }
+    public void gainMilitaryPoint(int points){
+        if(points   >=0)
+        militaryPoint+=points;
+    }
+    public void gainShieldNb(int pointsShield){
+        if(pointsShield   >=0)
+        shieldNb+=pointsShield;
+    }
 
 
 
