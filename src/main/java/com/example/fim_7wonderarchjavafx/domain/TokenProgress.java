@@ -27,7 +27,7 @@ public class TokenProgress {
 
     //Si on a 1 jeton culture alors on gagne 4 points et si on en a 2 on a 12 points
     public void cultureEffect(Player player){
-        // Si le joueur à 1 fois le jeton et gagne 4 pts et si il a deux fois le jetons
+        // Si le joueur à 1 fois le jeton et gagne 4 pts et si il a deux fois le jetons 12 points
         if (player.getPlayerToken().get("Culture") == 1){
             player.gainPartyPoint(4);
         } else if (player.getPlayerToken().get("Culture") == 2) {

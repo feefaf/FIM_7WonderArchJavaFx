@@ -65,12 +65,15 @@ public class Player {
                 System.out.println("Vous avez renseigné un étage négatif");
                 return false;
             }
+            //Si l'étage de la pièce est égale à l'étage de la wonder alors on voit si elle est construite
             else if(wonder.getLevel() == piece.getLevel()){
+                //Si elle ne l'est pas on renvoie false
                 if (piece.getStatus()==false){
                     return false;
                 }
             }
         }
+        //Si la pièce est construite on passe à l'étage suivant et on renvoie true
         wonder.addLevel();
         return true;
     }
@@ -112,10 +115,13 @@ public class Player {
 
     // Fonction qui permet de verifier si on a le jeton ou pas
     public boolean gotToken(String nameToken) {
+        //Verifie que le nom en paramètre se trouve bien dans le dictionnaire
         if (playerToken.containsKey(nameToken)) {
 
+            //Si le nom renseigné est égale à culture alors on verifie si on a 1 ou 2 jetons de ce type là
             if (nameToken == "Culture") {
                 if (playerToken.get(nameToken) >= 1 && playerToken.get(nameToken) <= 2) {
+                    //On remplace directement la valeur par 0 car on consomme directement le jeton
                     playerToken.replace(nameToken, 0);
                     return true;
                 }
